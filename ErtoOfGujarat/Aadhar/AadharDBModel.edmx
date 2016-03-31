@@ -1,0 +1,715 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AadharDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AadharMaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aadharNo" Type="numeric" Precision="12" Scale="0" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="gender" Type="int" />
+          <Property Name="dob" Type="date" />
+          <Property Name="bloodGroup" Type="int" />
+          <Property Name="isGaurded" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AadharDB.dbo.ConnectedAccountMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ConnectedAccountMaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="licenseNumber" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AadharDB.dbo.ContectMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ContectMaster">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="isPrimary" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="phoneNumber" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="emailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="isPrimary" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AadharDB.dbo.DigitalInfoMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DigitalInfoMaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="photo" Type="varbinary(max)" />
+          <Property Name="lThumb" Type="varbinary(max)" />
+          <Property Name="rThumb" Type="varbinary(max)" />
+          <Property Name="lFingers" Type="varbinary(max)" />
+          <Property Name="rFingers" Type="varbinary(max)" />
+          <Property Name="signature" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AadharDB.dbo.GardianMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GardianMaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="typeGardian" Type="int" />
+          <Property Name="gFirstName" Type="nvarchar" MaxLength="25" />
+          <Property Name="gMiddleName" Type="nvarchar" MaxLength="25" />
+          <Property Name="gLastName" Type="nvarchar" MaxLength="25" />
+          <Property Name="gAadharNo" Type="numeric" Precision="12" Scale="0" />
+        </EntityType>
+        <EntityType Name="IntigrationMaster">
+          <Key>
+            <PropertyRef Name="requestId" />
+          </Key>
+          <Property Name="requestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="aadharNo" Type="numeric" Precision="12" Scale="0" Nullable="false" />
+          <Property Name="externalUniqueId" Type="nvarchar" MaxLength="15" />
+          <Property Name="clientType" Type="nvarchar" MaxLength="15" />
+          <Property Name="requestDateTime" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AadharDB.dbo.OTPMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="OTPMaster">
+          <Key>
+            <PropertyRef Name="requestId" />
+            <PropertyRef Name="mOTP" />
+            <PropertyRef Name="eOTP" />
+          </Key>
+          <Property Name="requestId" Type="int" Nullable="false" />
+          <Property Name="mOTP" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="eOTP" Type="numeric" Precision="6" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AadharDB.dbo.PermentAddressMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PermentAddressMaster">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="IsLiveInPermentAddress" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="mainAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="nearByAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="optionalAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="city" Type="nvarchar" MaxLength="25" />
+          <Property Name="pincode" Type="numeric" Precision="6" Scale="0" />
+          <Property Name="IsLiveInPermentAddress" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AadharDB.dbo.PersentAddressMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PersentAddressMaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="mainAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="nearByAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="optionalAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="city" Type="nvarchar" MaxLength="25" />
+          <Property Name="pincode" Type="numeric" Precision="6" Scale="0" />
+          <Property Name="duration" Type="int" />
+        </EntityType>
+        <Association Name="FK__ConnectedAcc__id__2180FB33">
+          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
+          <End Role="ConnectedAccountMaster" Type="Self.ConnectedAccountMaster" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AadharMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ConnectedAccountMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContectMaste__id__1F98B2C1">
+          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
+          <End Role="ContectMaster" Type="Self.ContectMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AadharMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ContectMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DigitalInfoM__id__2739D489">
+          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
+          <End Role="DigitalInfoMaster" Type="Self.DigitalInfoMaster" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AadharMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DigitalInfoMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__GardianMa__gAadh__25518C17' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__GardianMa__gAadh__25518C17" />-->
+        <Association Name="FK__GardianMaste__id__236943A5">
+          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
+          <End Role="GardianMaster" Type="Self.GardianMaster" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AadharMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GardianMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__Intigrati__aadha__2FCF1A8A' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Intigrati__aadha__2FCF1A8A" />-->
+        <Association Name="FK__IntigrationM__id__2EDAF651">
+          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
+          <End Role="IntigrationMaster" Type="Self.IntigrationMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AadharMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="IntigrationMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OTPMaster__reque__32AB8735">
+          <End Role="IntigrationMaster" Type="Self.IntigrationMaster" Multiplicity="1" />
+          <End Role="OTPMaster" Type="Self.OTPMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IntigrationMaster">
+              <PropertyRef Name="requestId" />
+            </Principal>
+            <Dependent Role="OTPMaster">
+              <PropertyRef Name="requestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PermentAddre__id__29221CFB">
+          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
+          <End Role="PermentAddressMaster" Type="Self.PermentAddressMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AadharMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PermentAddressMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersentAddre__id__2B0A656D">
+          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
+          <End Role="PersentAddressMaster" Type="Self.PersentAddressMaster" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AadharMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PersentAddressMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AadharDBModelStoreContainer">
+          <EntitySet Name="AadharMaster" EntityType="Self.AadharMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IntigrationMaster" EntityType="Self.IntigrationMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConnectedAccountMaster" EntityType="Self.ConnectedAccountMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ConnectedAccountMaster].[id] AS [id], 
+    [ConnectedAccountMaster].[licenseNumber] AS [licenseNumber]
+    FROM [dbo].[ConnectedAccountMaster] AS [ConnectedAccountMaster]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ContectMaster" EntityType="Self.ContectMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ContectMaster].[id] AS [id], 
+    [ContectMaster].[phoneNumber] AS [phoneNumber], 
+    [ContectMaster].[emailId] AS [emailId], 
+    [ContectMaster].[isPrimary] AS [isPrimary]
+    FROM [dbo].[ContectMaster] AS [ContectMaster]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DigitalInfoMaster" EntityType="Self.DigitalInfoMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DigitalInfoMaster].[id] AS [id], 
+    [DigitalInfoMaster].[photo] AS [photo], 
+    [DigitalInfoMaster].[lThumb] AS [lThumb], 
+    [DigitalInfoMaster].[rThumb] AS [rThumb], 
+    [DigitalInfoMaster].[lFingers] AS [lFingers], 
+    [DigitalInfoMaster].[rFingers] AS [rFingers], 
+    [DigitalInfoMaster].[signature] AS [signature]
+    FROM [dbo].[DigitalInfoMaster] AS [DigitalInfoMaster]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GardianMaster" EntityType="Self.GardianMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GardianMaster].[id] AS [id], 
+    [GardianMaster].[typeGardian] AS [typeGardian], 
+    [GardianMaster].[gFirstName] AS [gFirstName], 
+    [GardianMaster].[gMiddleName] AS [gMiddleName], 
+    [GardianMaster].[gLastName] AS [gLastName], 
+    [GardianMaster].[gAadharNo] AS [gAadharNo]
+    FROM [dbo].[GardianMaster] AS [GardianMaster]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OTPMaster" EntityType="Self.OTPMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OTPMaster].[requestId] AS [requestId], 
+    [OTPMaster].[mOTP] AS [mOTP], 
+    [OTPMaster].[eOTP] AS [eOTP]
+    FROM [dbo].[OTPMaster] AS [OTPMaster]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PermentAddressMaster" EntityType="Self.PermentAddressMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PermentAddressMaster].[id] AS [id], 
+    [PermentAddressMaster].[mainAddress] AS [mainAddress], 
+    [PermentAddressMaster].[nearByAddress] AS [nearByAddress], 
+    [PermentAddressMaster].[optionalAddress] AS [optionalAddress], 
+    [PermentAddressMaster].[city] AS [city], 
+    [PermentAddressMaster].[pincode] AS [pincode], 
+    [PermentAddressMaster].[IsLiveInPermentAddress] AS [IsLiveInPermentAddress]
+    FROM [dbo].[PermentAddressMaster] AS [PermentAddressMaster]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PersentAddressMaster" EntityType="Self.PersentAddressMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PersentAddressMaster].[id] AS [id], 
+    [PersentAddressMaster].[mainAddress] AS [mainAddress], 
+    [PersentAddressMaster].[nearByAddress] AS [nearByAddress], 
+    [PersentAddressMaster].[optionalAddress] AS [optionalAddress], 
+    [PersentAddressMaster].[city] AS [city], 
+    [PersentAddressMaster].[pincode] AS [pincode], 
+    [PersentAddressMaster].[duration] AS [duration]
+    FROM [dbo].[PersentAddressMaster] AS [PersentAddressMaster]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__ConnectedAcc__id__2180FB33" Association="Self.FK__ConnectedAcc__id__2180FB33">
+            <End Role="AadharMaster" EntitySet="AadharMaster" />
+            <End Role="ConnectedAccountMaster" EntitySet="ConnectedAccountMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContectMaste__id__1F98B2C1" Association="Self.FK__ContectMaste__id__1F98B2C1">
+            <End Role="AadharMaster" EntitySet="AadharMaster" />
+            <End Role="ContectMaster" EntitySet="ContectMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DigitalInfoM__id__2739D489" Association="Self.FK__DigitalInfoM__id__2739D489">
+            <End Role="AadharMaster" EntitySet="AadharMaster" />
+            <End Role="DigitalInfoMaster" EntitySet="DigitalInfoMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GardianMaste__id__236943A5" Association="Self.FK__GardianMaste__id__236943A5">
+            <End Role="AadharMaster" EntitySet="AadharMaster" />
+            <End Role="GardianMaster" EntitySet="GardianMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__IntigrationM__id__2EDAF651" Association="Self.FK__IntigrationM__id__2EDAF651">
+            <End Role="AadharMaster" EntitySet="AadharMaster" />
+            <End Role="IntigrationMaster" EntitySet="IntigrationMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OTPMaster__reque__32AB8735" Association="Self.FK__OTPMaster__reque__32AB8735">
+            <End Role="IntigrationMaster" EntitySet="IntigrationMaster" />
+            <End Role="OTPMaster" EntitySet="OTPMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PermentAddre__id__29221CFB" Association="Self.FK__PermentAddre__id__29221CFB">
+            <End Role="AadharMaster" EntitySet="AadharMaster" />
+            <End Role="PermentAddressMaster" EntitySet="PermentAddressMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersentAddre__id__2B0A656D" Association="Self.FK__PersentAddre__id__2B0A656D">
+            <End Role="AadharMaster" EntitySet="AadharMaster" />
+            <End Role="PersentAddressMaster" EntitySet="PersentAddressMaster" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AadharDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AadharMaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aadharNo" Type="Decimal" Precision="12" Scale="0" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="Int32" />
+          <Property Name="dob" Type="DateTime" Precision="0" />
+          <Property Name="bloodGroup" Type="Int32" />
+          <Property Name="isGaurded" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ConnectedAccountMaster" Relationship="Self.FK__ConnectedAcc__id__2180FB33" FromRole="AadharMaster" ToRole="ConnectedAccountMaster" />
+          <NavigationProperty Name="ContectMasters" Relationship="Self.FK__ContectMaste__id__1F98B2C1" FromRole="AadharMaster" ToRole="ContectMaster" />
+          <NavigationProperty Name="DigitalInfoMaster" Relationship="Self.FK__DigitalInfoM__id__2739D489" FromRole="AadharMaster" ToRole="DigitalInfoMaster" />
+          <NavigationProperty Name="GardianMaster" Relationship="Self.FK__GardianMaste__id__236943A5" FromRole="AadharMaster" ToRole="GardianMaster" />
+          <NavigationProperty Name="IntigrationMasters" Relationship="Self.FK__IntigrationM__id__2EDAF651" FromRole="AadharMaster" ToRole="IntigrationMaster" />
+          <NavigationProperty Name="PermentAddressMasters" Relationship="Self.FK__PermentAddre__id__29221CFB" FromRole="AadharMaster" ToRole="PermentAddressMaster" />
+          <NavigationProperty Name="PersentAddressMaster" Relationship="Self.FK__PersentAddre__id__2B0A656D" FromRole="AadharMaster" ToRole="PersentAddressMaster" />
+        </EntityType>
+        <EntityType Name="IntigrationMaster">
+          <Key>
+            <PropertyRef Name="requestId" />
+          </Key>
+          <Property Name="requestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="aadharNo" Type="Decimal" Precision="12" Scale="0" Nullable="false" />
+          <Property Name="externalUniqueId" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="clientType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="requestDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AadharMaster" Relationship="Self.FK__IntigrationM__id__2EDAF651" FromRole="IntigrationMaster" ToRole="AadharMaster" />
+          <NavigationProperty Name="OTPMasters" Relationship="Self.FK__OTPMaster__reque__32AB8735" FromRole="IntigrationMaster" ToRole="OTPMaster" />
+        </EntityType>
+        <EntityType Name="ConnectedAccountMaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="licenseNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AadharMaster" Relationship="Self.FK__ConnectedAcc__id__2180FB33" FromRole="ConnectedAccountMaster" ToRole="AadharMaster" />
+        </EntityType>
+        <EntityType Name="ContectMaster">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="isPrimary" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="phoneNumber" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="emailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isPrimary" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AadharMaster" Relationship="Self.FK__ContectMaste__id__1F98B2C1" FromRole="ContectMaster" ToRole="AadharMaster" />
+        </EntityType>
+        <EntityType Name="DigitalInfoMaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="lThumb" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="rThumb" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="lFingers" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="rFingers" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="signature" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="AadharMaster" Relationship="Self.FK__DigitalInfoM__id__2739D489" FromRole="DigitalInfoMaster" ToRole="AadharMaster" />
+        </EntityType>
+        <EntityType Name="GardianMaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="typeGardian" Type="Int32" />
+          <Property Name="gFirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="gMiddleName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="gLastName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="gAadharNo" Type="Decimal" Precision="12" Scale="0" />
+          <NavigationProperty Name="AadharMaster" Relationship="Self.FK__GardianMaste__id__236943A5" FromRole="GardianMaster" ToRole="AadharMaster" />
+        </EntityType>
+        <EntityType Name="OTPMaster">
+          <Key>
+            <PropertyRef Name="requestId" />
+            <PropertyRef Name="mOTP" />
+            <PropertyRef Name="eOTP" />
+          </Key>
+          <Property Name="requestId" Type="Int32" Nullable="false" />
+          <Property Name="mOTP" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="eOTP" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <NavigationProperty Name="IntigrationMaster" Relationship="Self.FK__OTPMaster__reque__32AB8735" FromRole="OTPMaster" ToRole="IntigrationMaster" />
+        </EntityType>
+        <EntityType Name="PermentAddressMaster">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="IsLiveInPermentAddress" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="mainAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nearByAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="optionalAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="pincode" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="IsLiveInPermentAddress" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AadharMaster" Relationship="Self.FK__PermentAddre__id__29221CFB" FromRole="PermentAddressMaster" ToRole="AadharMaster" />
+        </EntityType>
+        <EntityType Name="PersentAddressMaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="mainAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nearByAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="optionalAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="pincode" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="duration" Type="Int32" />
+          <NavigationProperty Name="AadharMaster" Relationship="Self.FK__PersentAddre__id__2B0A656D" FromRole="PersentAddressMaster" ToRole="AadharMaster" />
+        </EntityType>
+        <Association Name="FK__ConnectedAcc__id__2180FB33">
+          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
+          <End Role="ConnectedAccountMaster" Type="Self.ConnectedAccountMaster" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AadharMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ConnectedAccountMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContectMaste__id__1F98B2C1">
+          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
+          <End Role="ContectMaster" Type="Self.ContectMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AadharMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ContectMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DigitalInfoM__id__2739D489">
+          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
+          <End Role="DigitalInfoMaster" Type="Self.DigitalInfoMaster" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AadharMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DigitalInfoMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GardianMaste__id__236943A5">
+          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
+          <End Role="GardianMaster" Type="Self.GardianMaster" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AadharMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GardianMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__IntigrationM__id__2EDAF651">
+          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
+          <End Role="IntigrationMaster" Type="Self.IntigrationMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AadharMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="IntigrationMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PermentAddre__id__29221CFB">
+          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
+          <End Role="PermentAddressMaster" Type="Self.PermentAddressMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AadharMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PermentAddressMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersentAddre__id__2B0A656D">
+          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
+          <End Role="PersentAddressMaster" Type="Self.PersentAddressMaster" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AadharMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PersentAddressMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OTPMaster__reque__32AB8735">
+          <End Role="IntigrationMaster" Type="Self.IntigrationMaster" Multiplicity="1" />
+          <End Role="OTPMaster" Type="Self.OTPMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IntigrationMaster">
+              <PropertyRef Name="requestId" />
+            </Principal>
+            <Dependent Role="OTPMaster">
+              <PropertyRef Name="requestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AadharDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AadharMasters" EntityType="Self.AadharMaster" />
+          <EntitySet Name="IntigrationMasters" EntityType="Self.IntigrationMaster" />
+          <EntitySet Name="ConnectedAccountMasters" EntityType="Self.ConnectedAccountMaster" />
+          <EntitySet Name="ContectMasters" EntityType="Self.ContectMaster" />
+          <EntitySet Name="DigitalInfoMasters" EntityType="Self.DigitalInfoMaster" />
+          <EntitySet Name="GardianMasters" EntityType="Self.GardianMaster" />
+          <EntitySet Name="OTPMasters" EntityType="Self.OTPMaster" />
+          <EntitySet Name="PermentAddressMasters" EntityType="Self.PermentAddressMaster" />
+          <EntitySet Name="PersentAddressMasters" EntityType="Self.PersentAddressMaster" />
+          <AssociationSet Name="FK__ConnectedAcc__id__2180FB33" Association="Self.FK__ConnectedAcc__id__2180FB33">
+            <End Role="AadharMaster" EntitySet="AadharMasters" />
+            <End Role="ConnectedAccountMaster" EntitySet="ConnectedAccountMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContectMaste__id__1F98B2C1" Association="Self.FK__ContectMaste__id__1F98B2C1">
+            <End Role="AadharMaster" EntitySet="AadharMasters" />
+            <End Role="ContectMaster" EntitySet="ContectMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DigitalInfoM__id__2739D489" Association="Self.FK__DigitalInfoM__id__2739D489">
+            <End Role="AadharMaster" EntitySet="AadharMasters" />
+            <End Role="DigitalInfoMaster" EntitySet="DigitalInfoMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GardianMaste__id__236943A5" Association="Self.FK__GardianMaste__id__236943A5">
+            <End Role="AadharMaster" EntitySet="AadharMasters" />
+            <End Role="GardianMaster" EntitySet="GardianMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__IntigrationM__id__2EDAF651" Association="Self.FK__IntigrationM__id__2EDAF651">
+            <End Role="AadharMaster" EntitySet="AadharMasters" />
+            <End Role="IntigrationMaster" EntitySet="IntigrationMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PermentAddre__id__29221CFB" Association="Self.FK__PermentAddre__id__29221CFB">
+            <End Role="AadharMaster" EntitySet="AadharMasters" />
+            <End Role="PermentAddressMaster" EntitySet="PermentAddressMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersentAddre__id__2B0A656D" Association="Self.FK__PersentAddre__id__2B0A656D">
+            <End Role="AadharMaster" EntitySet="AadharMasters" />
+            <End Role="PersentAddressMaster" EntitySet="PersentAddressMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OTPMaster__reque__32AB8735" Association="Self.FK__OTPMaster__reque__32AB8735">
+            <End Role="IntigrationMaster" EntitySet="IntigrationMasters" />
+            <End Role="OTPMaster" EntitySet="OTPMasters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AadharDBModelStoreContainer" CdmEntityContainer="AadharDBEntities">
+          <EntitySetMapping Name="AadharMasters">
+            <EntityTypeMapping TypeName="AadharDBModel.AadharMaster">
+              <MappingFragment StoreEntitySet="AadharMaster">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="aadharNo" ColumnName="aadharNo" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="bloodGroup" ColumnName="bloodGroup" />
+                <ScalarProperty Name="isGaurded" ColumnName="isGaurded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IntigrationMasters">
+            <EntityTypeMapping TypeName="AadharDBModel.IntigrationMaster">
+              <MappingFragment StoreEntitySet="IntigrationMaster">
+                <ScalarProperty Name="requestId" ColumnName="requestId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="aadharNo" ColumnName="aadharNo" />
+                <ScalarProperty Name="externalUniqueId" ColumnName="externalUniqueId" />
+                <ScalarProperty Name="clientType" ColumnName="clientType" />
+                <ScalarProperty Name="requestDateTime" ColumnName="requestDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConnectedAccountMasters">
+            <EntityTypeMapping TypeName="AadharDBModel.ConnectedAccountMaster">
+              <MappingFragment StoreEntitySet="ConnectedAccountMaster">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="licenseNumber" ColumnName="licenseNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContectMasters">
+            <EntityTypeMapping TypeName="AadharDBModel.ContectMaster">
+              <MappingFragment StoreEntitySet="ContectMaster">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+                <ScalarProperty Name="emailId" ColumnName="emailId" />
+                <ScalarProperty Name="isPrimary" ColumnName="isPrimary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DigitalInfoMasters">
+            <EntityTypeMapping TypeName="AadharDBModel.DigitalInfoMaster">
+              <MappingFragment StoreEntitySet="DigitalInfoMaster">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="lThumb" ColumnName="lThumb" />
+                <ScalarProperty Name="rThumb" ColumnName="rThumb" />
+                <ScalarProperty Name="lFingers" ColumnName="lFingers" />
+                <ScalarProperty Name="rFingers" ColumnName="rFingers" />
+                <ScalarProperty Name="signature" ColumnName="signature" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GardianMasters">
+            <EntityTypeMapping TypeName="AadharDBModel.GardianMaster">
+              <MappingFragment StoreEntitySet="GardianMaster">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="typeGardian" ColumnName="typeGardian" />
+                <ScalarProperty Name="gFirstName" ColumnName="gFirstName" />
+                <ScalarProperty Name="gMiddleName" ColumnName="gMiddleName" />
+                <ScalarProperty Name="gLastName" ColumnName="gLastName" />
+                <ScalarProperty Name="gAadharNo" ColumnName="gAadharNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OTPMasters">
+            <EntityTypeMapping TypeName="AadharDBModel.OTPMaster">
+              <MappingFragment StoreEntitySet="OTPMaster">
+                <ScalarProperty Name="requestId" ColumnName="requestId" />
+                <ScalarProperty Name="mOTP" ColumnName="mOTP" />
+                <ScalarProperty Name="eOTP" ColumnName="eOTP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PermentAddressMasters">
+            <EntityTypeMapping TypeName="AadharDBModel.PermentAddressMaster">
+              <MappingFragment StoreEntitySet="PermentAddressMaster">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="mainAddress" ColumnName="mainAddress" />
+                <ScalarProperty Name="nearByAddress" ColumnName="nearByAddress" />
+                <ScalarProperty Name="optionalAddress" ColumnName="optionalAddress" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="pincode" ColumnName="pincode" />
+                <ScalarProperty Name="IsLiveInPermentAddress" ColumnName="IsLiveInPermentAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersentAddressMasters">
+            <EntityTypeMapping TypeName="AadharDBModel.PersentAddressMaster">
+              <MappingFragment StoreEntitySet="PersentAddressMaster">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="mainAddress" ColumnName="mainAddress" />
+                <ScalarProperty Name="nearByAddress" ColumnName="nearByAddress" />
+                <ScalarProperty Name="optionalAddress" ColumnName="optionalAddress" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="pincode" ColumnName="pincode" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
