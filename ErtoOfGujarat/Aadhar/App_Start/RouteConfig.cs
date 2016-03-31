@@ -18,6 +18,12 @@ namespace Aadhar
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            //routes.MapRoute(
+            //    name: "Api",
+            //    url: "{area}/api/{controller}/{id}",
+            //    defaults: new { id = UrlParameter.Optional }
+            //);
         }
     }
 }

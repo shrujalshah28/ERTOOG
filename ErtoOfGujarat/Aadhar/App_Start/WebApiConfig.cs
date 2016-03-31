@@ -22,7 +22,7 @@ namespace Aadhar
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{area}/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }
