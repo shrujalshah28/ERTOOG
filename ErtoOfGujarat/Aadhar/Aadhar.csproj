@@ -227,6 +227,14 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\AadharApi\AadharApiAreaRegistration.cs" />
     <Compile Include="Areas\AadharApi\Controllers\AadharController.cs" />
+    <Compile Include="Areas\AadharApi\Controllers\ConnectedAccountController.cs" />
+    <Compile Include="Areas\AadharApi\Controllers\ContectController.cs" />
+    <Compile Include="Areas\AadharApi\Controllers\DigitalInfoController.cs" />
+    <Compile Include="Areas\AadharApi\Controllers\GardianController.cs" />
+    <Compile Include="Areas\AadharApi\Controllers\IntigrationController.cs" />
+    <Compile Include="Areas\AadharApi\Controllers\OTPController.cs" />
+    <Compile Include="Areas\AadharApi\Controllers\PermentAddressController.cs" />
+    <Compile Include="Areas\AadharApi\Controllers\PersentAddressController.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
