@@ -8,12 +8,12 @@
         <EntityTypeShape EntityType="AadharDBModel.AadharMaster" Width="1.5" PointX="4.375" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="AadharDBModel.IntigrationMaster" Width="1.5" PointX="6.625" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="AadharDBModel.ConnectedAccountMaster" Width="1.5" PointX="2.375" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AadharDBModel.ContectMaster" Width="1.5" PointX="0.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AadharDBModel.ContectMaster" Width="1.5" PointX="0.5" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="AadharDBModel.DigitalInfoMaster" Width="1.5" PointX="8.875" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AadharDBModel.GardianMaster" Width="1.5" PointX="2.375" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AadharDBModel.GardianMaster" Width="1.5" PointX="2.375" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="AadharDBModel.OTPMaster" Width="1.5" PointX="8.875" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="AadharDBModel.PermentAddressMaster" Width="1.5" PointX="7" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="AadharDBModel.PersentAddressMaster" Width="1.5" PointX="0.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AadharDBModel.PersentAddressMaster" Width="1.5" PointX="0.5" PointY="3.25" IsExpanded="true" />
         <AssociationConnector Association="AadharDBModel.FK__ConnectedAcc__id__2180FB33" ManuallyRouted="false" />
         <AssociationConnector Association="AadharDBModel.FK__ContectMaste__id__1F98B2C1" ManuallyRouted="false" />
         <AssociationConnector Association="AadharDBModel.FK__DigitalInfoM__id__2739D489" ManuallyRouted="false" />
