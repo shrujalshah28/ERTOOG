@@ -11,15 +11,26 @@ namespace Aadhar
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.Runtime.Serialization;
+
+    [Serializable]
+    [DataContract]
     public partial class DigitalInfoMaster
     {
+        [DataMember]
         public int id { get; set; }
+        [DataMember]
         public byte[] photo { get; set; }
+        [DataMember]
         public byte[] lThumb { get; set; }
+        [DataMember]
         public byte[] rThumb { get; set; }
+        [DataMember]
         public byte[] lFingers { get; set; }
+        [DataMember]
         public byte[] rFingers { get; set; }
+        [DataMember]
         public byte[] signature { get; set; }
     
         public virtual AadharMaster AadharMaster { get; set; }

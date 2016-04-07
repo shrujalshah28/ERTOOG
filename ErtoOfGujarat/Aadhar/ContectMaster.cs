@@ -11,12 +11,23 @@ namespace Aadhar
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Runtime.Serialization;
     
+    [Serializable]
+    [DataContract]
     public partial class ContectMaster
     {
+        [DataMember]
         public int id { get; set; }
+        [DataMember]
+        [Display(Name ="Phone No.")]
         public Nullable<decimal> phoneNumber { get; set; }
+        [DataMember]
+        [Display(Name ="Email Id")]
         public string emailId { get; set; }
+        [DataMember]
+        [Display(Name ="Primary Contect")]
         public bool isPrimary { get; set; }
     
         public virtual AadharMaster AadharMaster { get; set; }

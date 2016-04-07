@@ -11,11 +11,18 @@ namespace Aadhar
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.Runtime.Serialization;
+
+    [Serializable]
+    [DataContract]
     public partial class OTPMaster
     {
+        [DataMember]
         public int requestId { get; set; }
+        [DataMember]
         public decimal mOTP { get; set; }
+        [DataMember]
         public decimal eOTP { get; set; }
     
         public virtual IntigrationMaster IntigrationMaster { get; set; }
