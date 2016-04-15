@@ -11,24 +11,14 @@ namespace Aadhar
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Runtime.Serialization;
     
-    [Serializable]
-    [DataContract]
     public partial class GardianMaster
     {
-        [DataMember]
         public int id { get; set; }
-        [DataMember]
         public Nullable<int> typeGardian { get; set; }
-        [DataMember]
         public string gFirstName { get; set; }
-        [DataMember]
         public string gMiddleName { get; set; }
-        [DataMember]
         public string gLastName { get; set; }
-        [DataMember]
         public Nullable<decimal> gAadharNo { get; set; }
     
         public virtual AadharMaster AadharMaster { get; set; }

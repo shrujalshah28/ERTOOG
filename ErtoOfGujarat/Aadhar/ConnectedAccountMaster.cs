@@ -11,17 +11,10 @@ namespace Aadhar
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Runtime.Serialization;
     
-    [Serializable]
-    [DataContract]
     public partial class ConnectedAccountMaster
     {
-        [DataMember]
         public int id { get; set; }
-        [DataMember]
-        [Display(Name ="License No.")]
         public string licenseNumber { get; set; }
     
         public virtual AadharMaster AadharMaster { get; set; }

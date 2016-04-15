@@ -227,6 +227,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\AadharApi\AadharApiAreaRegistration.cs" />
     <Compile Include="Areas\AadharApi\Controllers\AadharController.cs" />
+    <Compile Include="Areas\AadharApi\Controllers\AadharIntigrationController.cs" />
     <Compile Include="Areas\AadharApi\Controllers\ConnectedAccountController.cs" />
     <Compile Include="Areas\AadharApi\Controllers\ContectController.cs" />
     <Compile Include="Areas\AadharApi\Controllers\DigitalInfoController.cs" />

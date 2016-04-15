@@ -11,11 +11,7 @@ namespace Aadhar
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Runtime.Serialization;
     
-    [Serializable]
-    [DataContract]
     public partial class IntigrationMaster
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,18 +19,12 @@ namespace Aadhar
         {
             this.OTPMasters = new HashSet<OTPMaster>();
         }
-
-        [DataMember]
+    
         public int requestId { get; set; }
-        [DataMember]
         public int id { get; set; }
-        [DataMember]
         public decimal aadharNo { get; set; }
-        [DataMember]
         public string externalUniqueId { get; set; }
-        [DataMember]
         public string clientType { get; set; }
-        [DataMember]
         public Nullable<System.DateTime> requestDateTime { get; set; }
     
         public virtual AadharMaster AadharMaster { get; set; }

@@ -11,11 +11,7 @@ namespace Aadhar
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Runtime.Serialization;
     
-    [Serializable]
-    [DataContract]
     public partial class AadharMaster
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,23 +21,14 @@ namespace Aadhar
             this.IntigrationMasters = new HashSet<IntigrationMaster>();
             this.PermentAddressMasters = new HashSet<PermentAddressMaster>();
         }
-
-        [DataMember]
+    
         public int id { get; set; }
-        [DataMember]
-        [Display(Name ="Aadhar No.")]
         public Nullable<decimal> aadharNo { get; set; }
-        [DataMember]
         public string firstName { get; set; }
-        [DataMember]
         public string lastName { get; set; }
-        [DataMember]
         public Nullable<int> gender { get; set; }
-        [DataMember]
         public Nullable<System.DateTime> dob { get; set; }
-        [DataMember]
         public Nullable<int> bloodGroup { get; set; }
-        [DataMember]
         public bool isGaurded { get; set; }
     
         public virtual ConnectedAccountMaster ConnectedAccountMaster { get; set; }

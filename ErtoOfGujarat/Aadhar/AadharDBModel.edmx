@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AadharDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AadharDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AadharMaster">
           <Key>
             <PropertyRef Name="id" />
@@ -77,14 +77,11 @@ warning 6002: The table/view 'AadharDB.dbo.GardianMaster' does not have a primar
           <Property Name="clientType" Type="nvarchar" MaxLength="15" />
           <Property Name="requestDateTime" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'AadharDB.dbo.OTPMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="OTPMaster">
           <Key>
-            <PropertyRef Name="requestId" />
-            <PropertyRef Name="mOTP" />
-            <PropertyRef Name="eOTP" />
+            <PropertyRef Name="id" />
           </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="requestId" Type="int" Nullable="false" />
           <Property Name="mOTP" Type="numeric" Precision="4" Scale="0" Nullable="false" />
           <Property Name="eOTP" Type="numeric" Precision="6" Scale="0" Nullable="false" />
@@ -184,7 +181,7 @@ warning 6035: The relationship 'FK__Intigrati__aadha__2FCF1A8A' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OTPMaster__reque__32AB8735">
+        <Association Name="FK__OTPMaster__reque__40F9A68C">
           <End Role="IntigrationMaster" Type="Self.IntigrationMaster" Multiplicity="1" />
           <End Role="OTPMaster" Type="Self.OTPMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -223,6 +220,7 @@ warning 6035: The relationship 'FK__Intigrati__aadha__2FCF1A8A' has columns that
         <EntityContainer Name="AadharDBModelStoreContainer">
           <EntitySet Name="AadharMaster" EntityType="Self.AadharMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IntigrationMaster" EntityType="Self.IntigrationMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OTPMaster" EntityType="Self.OTPMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ConnectedAccountMaster" EntityType="Self.ConnectedAccountMaster" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [ConnectedAccountMaster].[id] AS [id], 
@@ -257,13 +255,6 @@ warning 6035: The relationship 'FK__Intigrati__aadha__2FCF1A8A' has columns that
     [GardianMaster].[gLastName] AS [gLastName], 
     [GardianMaster].[gAadharNo] AS [gAadharNo]
     FROM [dbo].[GardianMaster] AS [GardianMaster]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="OTPMaster" EntityType="Self.OTPMaster" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [OTPMaster].[requestId] AS [requestId], 
-    [OTPMaster].[mOTP] AS [mOTP], 
-    [OTPMaster].[eOTP] AS [eOTP]
-    FROM [dbo].[OTPMaster] AS [OTPMaster]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="PermentAddressMaster" EntityType="Self.PermentAddressMaster" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -307,7 +298,7 @@ warning 6035: The relationship 'FK__Intigrati__aadha__2FCF1A8A' has columns that
             <End Role="AadharMaster" EntitySet="AadharMaster" />
             <End Role="IntigrationMaster" EntitySet="IntigrationMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__OTPMaster__reque__32AB8735" Association="Self.FK__OTPMaster__reque__32AB8735">
+          <AssociationSet Name="FK__OTPMaster__reque__40F9A68C" Association="Self.FK__OTPMaster__reque__40F9A68C">
             <End Role="IntigrationMaster" EntitySet="IntigrationMaster" />
             <End Role="OTPMaster" EntitySet="OTPMaster" />
           </AssociationSet>
@@ -320,8 +311,7 @@ warning 6035: The relationship 'FK__Intigrati__aadha__2FCF1A8A' has columns that
             <End Role="PersentAddressMaster" EntitySet="PersentAddressMaster" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AadharDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -404,14 +394,13 @@ warning 6035: The relationship 'FK__Intigrati__aadha__2FCF1A8A' has columns that
         </EntityType>
         <EntityType Name="OTPMaster">
           <Key>
-            <PropertyRef Name="requestId" />
-            <PropertyRef Name="mOTP" />
-            <PropertyRef Name="eOTP" />
+            <PropertyRef Name="id" />
           </Key>
           <Property Name="requestId" Type="Int32" Nullable="false" />
           <Property Name="mOTP" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
           <Property Name="eOTP" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
           <NavigationProperty Name="IntigrationMaster" Relationship="Self.FK__OTPMaster__reque__32AB8735" FromRole="OTPMaster" ToRole="IntigrationMaster" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="PermentAddressMaster">
           <Key>
@@ -657,6 +646,7 @@ warning 6035: The relationship 'FK__Intigrati__aadha__2FCF1A8A' has columns that
           <EntitySetMapping Name="OTPMasters">
             <EntityTypeMapping TypeName="AadharDBModel.OTPMaster">
               <MappingFragment StoreEntitySet="OTPMaster">
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="requestId" ColumnName="requestId" />
                 <ScalarProperty Name="mOTP" ColumnName="mOTP" />
                 <ScalarProperty Name="eOTP" ColumnName="eOTP" />

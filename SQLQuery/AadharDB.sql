@@ -88,7 +88,8 @@ create table IntigrationMaster
 
 create table OTPMaster
 (
-	requestId int foreign key references dbo.IntigrationMaster(requestId) unique not null,
+	id int primary key identity(1,1) not null,
+	requestId int foreign key references dbo.IntigrationMaster(requestId) not null,
 	mOTP numeric(4) not null,
 	eOTP numeric(6) not null,
 );
