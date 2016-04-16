@@ -35,6 +35,7 @@ create table ConnectedAccountMaster
 
 create table GardianMaster
 (
+	pKey int primary key identity(1,1) not null,
 	id int foreign key references dbo.AadharMaster(id) not null,
 	typeGardian int check(typeGardian >= 1 and typeGardian <=3),
 	gFirstName nvarchar(25),

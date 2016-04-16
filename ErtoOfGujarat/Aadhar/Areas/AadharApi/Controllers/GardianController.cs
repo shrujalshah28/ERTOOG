@@ -26,22 +26,7 @@ namespace Aadhar.Areas.AadharApi.Controllers
         [ResponseType(typeof(GardianMaster))]
         public IHttpActionResult GetGardianMaster(int id)
         {
-            //GardianMaster gardianMaster = db.GardianMasters.Find(id);
-            GardianMaster gardianMaster = db.GardianMasters.First(a => a.id == id);
-            if (gardianMaster == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(gardianMaster);
-        }
-
-        // GET: /api/AadharApi/Gardian/1?gtype=2
-        [ResponseType(typeof(GardianMaster))]
-        public IHttpActionResult GetGardianMaster(int id,int gtype)
-        {
-            //GardianMaster gardianMaster = db.GardianMasters.Find(id);
-            GardianMaster gardianMaster = db.GardianMasters.First(a => a.id == id && a.typeGardian == gtype);
+            GardianMaster gardianMaster = db.GardianMasters.Find(id);
             if (gardianMaster == null)
             {
                 return NotFound();

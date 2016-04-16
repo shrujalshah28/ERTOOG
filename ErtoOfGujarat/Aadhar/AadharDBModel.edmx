@@ -4,19 +4,19 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="AadharDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="AadharDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
         <EntityType Name="AadharMaster">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="aadharNo" Type="numeric" Precision="12" Scale="0" />
-          <Property Name="firstName" Type="nvarchar" MaxLength="50" />
-          <Property Name="lastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="aadharNo" Precision="12" Scale="0" Type="numeric" />
+          <Property Name="firstName" MaxLength="50" Type="nvarchar" />
+          <Property Name="lastName" MaxLength="50" Type="nvarchar" />
           <Property Name="gender" Type="int" />
           <Property Name="dob" Type="date" />
           <Property Name="bloodGroup" Type="int" />
-          <Property Name="isGaurded" Type="bit" Nullable="false" />
+          <Property Name="isGaurded" Nullable="false" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'AadharDB.dbo.ConnectedAccountMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -24,8 +24,8 @@ warning 6002: The table/view 'AadharDB.dbo.ConnectedAccountMaster' does not have
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="licenseNumber" Type="nvarchar" MaxLength="15" />
+          <Property Name="id" Nullable="false" Type="int" />
+          <Property Name="licenseNumber" MaxLength="15" Type="nvarchar" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'AadharDB.dbo.ContectMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -34,10 +34,10 @@ warning 6002: The table/view 'AadharDB.dbo.ContectMaster' does not have a primar
             <PropertyRef Name="id" />
             <PropertyRef Name="isPrimary" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="phoneNumber" Type="numeric" Precision="10" Scale="0" />
-          <Property Name="emailId" Type="nvarchar" MaxLength="50" />
-          <Property Name="isPrimary" Type="bit" Nullable="false" />
+          <Property Name="id" Nullable="false" Type="int" />
+          <Property Name="phoneNumber" Precision="10" Scale="0" Type="numeric" />
+          <Property Name="emailId" MaxLength="50" Type="nvarchar" />
+          <Property Name="isPrimary" Nullable="false" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'AadharDB.dbo.DigitalInfoMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -45,7 +45,7 @@ warning 6002: The table/view 'AadharDB.dbo.DigitalInfoMaster' does not have a pr
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Nullable="false" Type="int" />
           <Property Name="photo" Type="varbinary(max)" />
           <Property Name="lThumb" Type="varbinary(max)" />
           <Property Name="rThumb" Type="varbinary(max)" />
@@ -59,32 +59,32 @@ warning 6002: The table/view 'AadharDB.dbo.GardianMaster' does not have a primar
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Nullable="false" Type="int" />
           <Property Name="typeGardian" Type="int" />
-          <Property Name="gFirstName" Type="nvarchar" MaxLength="25" />
-          <Property Name="gMiddleName" Type="nvarchar" MaxLength="25" />
-          <Property Name="gLastName" Type="nvarchar" MaxLength="25" />
-          <Property Name="gAadharNo" Type="numeric" Precision="12" Scale="0" />
+          <Property Name="gFirstName" MaxLength="25" Type="nvarchar" />
+          <Property Name="gMiddleName" MaxLength="25" Type="nvarchar" />
+          <Property Name="gLastName" MaxLength="25" Type="nvarchar" />
+          <Property Name="gAadharNo" Precision="12" Scale="0" Type="numeric" />
         </EntityType>
         <EntityType Name="IntigrationMaster">
           <Key>
             <PropertyRef Name="requestId" />
           </Key>
-          <Property Name="requestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="aadharNo" Type="numeric" Precision="12" Scale="0" Nullable="false" />
-          <Property Name="externalUniqueId" Type="nvarchar" MaxLength="15" />
-          <Property Name="clientType" Type="nvarchar" MaxLength="15" />
+          <Property Name="requestId" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="id" Nullable="false" Type="int" />
+          <Property Name="aadharNo" Nullable="false" Precision="12" Scale="0" Type="numeric" />
+          <Property Name="externalUniqueId" MaxLength="15" Type="nvarchar" />
+          <Property Name="clientType" MaxLength="15" Type="nvarchar" />
           <Property Name="requestDateTime" Type="datetime" />
         </EntityType>
         <EntityType Name="OTPMaster">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="requestId" Type="int" Nullable="false" />
-          <Property Name="mOTP" Type="numeric" Precision="4" Scale="0" Nullable="false" />
-          <Property Name="eOTP" Type="numeric" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="requestId" Nullable="false" Type="int" />
+          <Property Name="mOTP" Nullable="false" Precision="4" Scale="0" Type="numeric" />
+          <Property Name="eOTP" Nullable="false" Precision="6" Scale="0" Type="numeric" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'AadharDB.dbo.PermentAddressMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -93,13 +93,13 @@ warning 6002: The table/view 'AadharDB.dbo.PermentAddressMaster' does not have a
             <PropertyRef Name="id" />
             <PropertyRef Name="IsLiveInPermentAddress" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="mainAddress" Type="nvarchar" MaxLength="50" />
-          <Property Name="nearByAddress" Type="nvarchar" MaxLength="50" />
-          <Property Name="optionalAddress" Type="nvarchar" MaxLength="50" />
-          <Property Name="city" Type="nvarchar" MaxLength="25" />
-          <Property Name="pincode" Type="numeric" Precision="6" Scale="0" />
-          <Property Name="IsLiveInPermentAddress" Type="bit" Nullable="false" />
+          <Property Name="id" Nullable="false" Type="int" />
+          <Property Name="mainAddress" MaxLength="50" Type="nvarchar" />
+          <Property Name="nearByAddress" MaxLength="50" Type="nvarchar" />
+          <Property Name="optionalAddress" MaxLength="50" Type="nvarchar" />
+          <Property Name="city" MaxLength="25" Type="nvarchar" />
+          <Property Name="pincode" Precision="6" Scale="0" Type="numeric" />
+          <Property Name="IsLiveInPermentAddress" Nullable="false" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'AadharDB.dbo.PersentAddressMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -107,17 +107,17 @@ warning 6002: The table/view 'AadharDB.dbo.PersentAddressMaster' does not have a
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="mainAddress" Type="nvarchar" MaxLength="50" />
-          <Property Name="nearByAddress" Type="nvarchar" MaxLength="50" />
-          <Property Name="optionalAddress" Type="nvarchar" MaxLength="50" />
-          <Property Name="city" Type="nvarchar" MaxLength="25" />
-          <Property Name="pincode" Type="numeric" Precision="6" Scale="0" />
+          <Property Name="id" Nullable="false" Type="int" />
+          <Property Name="mainAddress" MaxLength="50" Type="nvarchar" />
+          <Property Name="nearByAddress" MaxLength="50" Type="nvarchar" />
+          <Property Name="optionalAddress" MaxLength="50" Type="nvarchar" />
+          <Property Name="city" MaxLength="25" Type="nvarchar" />
+          <Property Name="pincode" Precision="6" Scale="0" Type="numeric" />
           <Property Name="duration" Type="int" />
         </EntityType>
         <Association Name="FK__ConnectedAcc__id__2180FB33">
-          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
-          <End Role="ConnectedAccountMaster" Type="Self.ConnectedAccountMaster" Multiplicity="0..1" />
+          <End Type="Self.AadharMaster" Multiplicity="1" Role="AadharMaster" />
+          <End Type="Self.ConnectedAccountMaster" Multiplicity="0..1" Role="ConnectedAccountMaster" />
           <ReferentialConstraint>
             <Principal Role="AadharMaster">
               <PropertyRef Name="id" />
@@ -128,8 +128,8 @@ warning 6002: The table/view 'AadharDB.dbo.PersentAddressMaster' does not have a
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ContectMaste__id__1F98B2C1">
-          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
-          <End Role="ContectMaster" Type="Self.ContectMaster" Multiplicity="*" />
+          <End Type="Self.AadharMaster" Multiplicity="1" Role="AadharMaster" />
+          <End Type="Self.ContectMaster" Multiplicity="*" Role="ContectMaster" />
           <ReferentialConstraint>
             <Principal Role="AadharMaster">
               <PropertyRef Name="id" />
@@ -140,8 +140,8 @@ warning 6002: The table/view 'AadharDB.dbo.PersentAddressMaster' does not have a
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__DigitalInfoM__id__2739D489">
-          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
-          <End Role="DigitalInfoMaster" Type="Self.DigitalInfoMaster" Multiplicity="0..1" />
+          <End Type="Self.AadharMaster" Multiplicity="1" Role="AadharMaster" />
+          <End Type="Self.DigitalInfoMaster" Multiplicity="0..1" Role="DigitalInfoMaster" />
           <ReferentialConstraint>
             <Principal Role="AadharMaster">
               <PropertyRef Name="id" />
@@ -155,8 +155,8 @@ warning 6002: The table/view 'AadharDB.dbo.PersentAddressMaster' does not have a
 warning 6035: The relationship 'FK__GardianMa__gAadh__25518C17' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
         <Association Name="FK__GardianMa__gAadh__25518C17" />-->
         <Association Name="FK__GardianMaste__id__236943A5">
-          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
-          <End Role="GardianMaster" Type="Self.GardianMaster" Multiplicity="0..1" />
+          <End Type="Self.AadharMaster" Multiplicity="1" Role="AadharMaster" />
+          <End Type="Self.GardianMaster" Multiplicity="0..1" Role="GardianMaster" />
           <ReferentialConstraint>
             <Principal Role="AadharMaster">
               <PropertyRef Name="id" />
@@ -170,8 +170,8 @@ warning 6035: The relationship 'FK__GardianMa__gAadh__25518C17' has columns that
 warning 6035: The relationship 'FK__Intigrati__aadha__2FCF1A8A' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
         <Association Name="FK__Intigrati__aadha__2FCF1A8A" />-->
         <Association Name="FK__IntigrationM__id__2EDAF651">
-          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
-          <End Role="IntigrationMaster" Type="Self.IntigrationMaster" Multiplicity="*" />
+          <End Type="Self.AadharMaster" Multiplicity="1" Role="AadharMaster" />
+          <End Type="Self.IntigrationMaster" Multiplicity="*" Role="IntigrationMaster" />
           <ReferentialConstraint>
             <Principal Role="AadharMaster">
               <PropertyRef Name="id" />
@@ -182,8 +182,8 @@ warning 6035: The relationship 'FK__Intigrati__aadha__2FCF1A8A' has columns that
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__OTPMaster__reque__40F9A68C">
-          <End Role="IntigrationMaster" Type="Self.IntigrationMaster" Multiplicity="1" />
-          <End Role="OTPMaster" Type="Self.OTPMaster" Multiplicity="*" />
+          <End Type="Self.IntigrationMaster" Multiplicity="1" Role="IntigrationMaster" />
+          <End Type="Self.OTPMaster" Multiplicity="*" Role="OTPMaster" />
           <ReferentialConstraint>
             <Principal Role="IntigrationMaster">
               <PropertyRef Name="requestId" />
@@ -194,8 +194,8 @@ warning 6035: The relationship 'FK__Intigrati__aadha__2FCF1A8A' has columns that
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__PermentAddre__id__29221CFB">
-          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
-          <End Role="PermentAddressMaster" Type="Self.PermentAddressMaster" Multiplicity="*" />
+          <End Type="Self.AadharMaster" Multiplicity="1" Role="AadharMaster" />
+          <End Type="Self.PermentAddressMaster" Multiplicity="*" Role="PermentAddressMaster" />
           <ReferentialConstraint>
             <Principal Role="AadharMaster">
               <PropertyRef Name="id" />
@@ -206,8 +206,8 @@ warning 6035: The relationship 'FK__Intigrati__aadha__2FCF1A8A' has columns that
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__PersentAddre__id__2B0A656D">
-          <End Role="AadharMaster" Type="Self.AadharMaster" Multiplicity="1" />
-          <End Role="PersentAddressMaster" Type="Self.PersentAddressMaster" Multiplicity="0..1" />
+          <End Type="Self.AadharMaster" Multiplicity="1" Role="AadharMaster" />
+          <End Type="Self.PersentAddressMaster" Multiplicity="0..1" Role="PersentAddressMaster" />
           <ReferentialConstraint>
             <Principal Role="AadharMaster">
               <PropertyRef Name="id" />
@@ -279,36 +279,36 @@ warning 6035: The relationship 'FK__Intigrati__aadha__2FCF1A8A' has columns that
     FROM [dbo].[PersentAddressMaster] AS [PersentAddressMaster]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__ConnectedAcc__id__2180FB33" Association="Self.FK__ConnectedAcc__id__2180FB33">
-            <End Role="AadharMaster" EntitySet="AadharMaster" />
-            <End Role="ConnectedAccountMaster" EntitySet="ConnectedAccountMaster" />
+            <End EntitySet="AadharMaster" Role="AadharMaster" />
+            <End EntitySet="ConnectedAccountMaster" Role="ConnectedAccountMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__ContectMaste__id__1F98B2C1" Association="Self.FK__ContectMaste__id__1F98B2C1">
-            <End Role="AadharMaster" EntitySet="AadharMaster" />
-            <End Role="ContectMaster" EntitySet="ContectMaster" />
+            <End EntitySet="AadharMaster" Role="AadharMaster" />
+            <End EntitySet="ContectMaster" Role="ContectMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__DigitalInfoM__id__2739D489" Association="Self.FK__DigitalInfoM__id__2739D489">
-            <End Role="AadharMaster" EntitySet="AadharMaster" />
-            <End Role="DigitalInfoMaster" EntitySet="DigitalInfoMaster" />
+            <End EntitySet="AadharMaster" Role="AadharMaster" />
+            <End EntitySet="DigitalInfoMaster" Role="DigitalInfoMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__GardianMaste__id__236943A5" Association="Self.FK__GardianMaste__id__236943A5">
-            <End Role="AadharMaster" EntitySet="AadharMaster" />
-            <End Role="GardianMaster" EntitySet="GardianMaster" />
+            <End EntitySet="AadharMaster" Role="AadharMaster" />
+            <End EntitySet="GardianMaster" Role="GardianMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__IntigrationM__id__2EDAF651" Association="Self.FK__IntigrationM__id__2EDAF651">
-            <End Role="AadharMaster" EntitySet="AadharMaster" />
-            <End Role="IntigrationMaster" EntitySet="IntigrationMaster" />
+            <End EntitySet="AadharMaster" Role="AadharMaster" />
+            <End EntitySet="IntigrationMaster" Role="IntigrationMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__OTPMaster__reque__40F9A68C" Association="Self.FK__OTPMaster__reque__40F9A68C">
-            <End Role="IntigrationMaster" EntitySet="IntigrationMaster" />
-            <End Role="OTPMaster" EntitySet="OTPMaster" />
+            <End EntitySet="IntigrationMaster" Role="IntigrationMaster" />
+            <End EntitySet="OTPMaster" Role="OTPMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__PermentAddre__id__29221CFB" Association="Self.FK__PermentAddre__id__29221CFB">
-            <End Role="AadharMaster" EntitySet="AadharMaster" />
-            <End Role="PermentAddressMaster" EntitySet="PermentAddressMaster" />
+            <End EntitySet="AadharMaster" Role="AadharMaster" />
+            <End EntitySet="PermentAddressMaster" Role="PermentAddressMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__PersentAddre__id__2B0A656D" Association="Self.FK__PersentAddre__id__2B0A656D">
-            <End Role="AadharMaster" EntitySet="AadharMaster" />
-            <End Role="PersentAddressMaster" EntitySet="PersentAddressMaster" />
+            <End EntitySet="AadharMaster" Role="AadharMaster" />
+            <End EntitySet="PersentAddressMaster" Role="PersentAddressMaster" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
