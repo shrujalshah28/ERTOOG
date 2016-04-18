@@ -14,41 +14,40 @@ using Newtonsoft.Json;
 
 namespace Aadhar.Areas.AadharApi.Controllers
 {
-    //[RoutePrefix("~/api/{area}/AadharIntigration")]
     public class AadharIntigrationController : ApiController
     {
         private AadharDBEntities db = new AadharDBEntities();
 
         [System.Web.Http.HttpGet]
-        //[Route("Request/{id}")]
-        //[System.Web.Http.ActionName("request")]
         public IHttpActionResult GetRequest(decimal aadharNo, string eUid, string type)
         {
-            //int id = Convert.ToInt32(db.AadharMasters.Where(a => a.aadharNo == aadharNo).Select(a => a.id).ToString());
-            //int id = Convert.ToInt32(id1);
-            //Getting id from aadhar number
-            var data = from asd in db.AadharMasters where asd.aadharNo == aadharNo select new { asd.id };
+            //Getting id and birth day from aadhar number
+            var data = from asd in db.AadharMasters where asd.aadharNo == aadharNo select new { asd.id, asd.dob };
             int id = 0;
+            System.DateTime dob = System.DateTime.Now;
             foreach (var item in data)
             {
                 id = item.id;
+                dob = Convert.ToDateTime(item.dob);
             }
+
+            //It can be improved.
+            DateTime today = DateTime.Today;
+            int age = today.Year - dob.Year;
+
+            if (dob > today.AddYears(-age))
+                age--;
+
             IntigrationMaster im = new IntigrationMaster() { id = id, aadharNo = aadharNo, externalUniqueId = eUid, clientType = type, requestDateTime = DateTime.Now };
             db.IntigrationMasters.Add(im);
             db.SaveChanges();
             int newRequestID = im.requestId;
 
-            var addedRid = from asd in db.IntigrationMasters where asd.id == id orderby asd.id ascending group asd by asd.id;
-            int rid = 0;
-            foreach (var item in addedRid)
-            {
-                foreach (var li in item)
-                {
-                    rid = li.requestId;
-                }
-            }
+            Random rnd = new Random();
+            int motp = rnd.Next(1000, 9999);
+            int eotp = rnd.Next(100000, 999999);
 
-            OTPMaster om = new OTPMaster() { requestId = rid, mOTP = 1234, eOTP = 123456 };
+            OTPMaster om = new OTPMaster() { requestId = newRequestID, mOTP = motp, eOTP = eotp };
             db.OTPMasters.Add(om);
             db.SaveChanges();
 
@@ -60,7 +59,7 @@ namespace Aadhar.Areas.AadharApi.Controllers
                 pno = Convert.ToDecimal(item.phoneNumber);
                 email = item.emailId;
             }
-            var result = new { requestId = rid, phoneNo = pno, emailId = email };
+            var result = new { requestId = newRequestID, Age = age, phoneNo = pno, emailId = email };
 
             return Ok(result);
         }
@@ -88,7 +87,7 @@ namespace Aadhar.Areas.AadharApi.Controllers
             string lname = null;
             int dbgender = 0;
             string gender = null;
-            System.DateTime dob = System.DateTime.Now;
+            string dob = null;
             int dbbloodGroup = 0;
             string bloodGroup = null;
             bool dbisGardad = false;
@@ -102,7 +101,7 @@ namespace Aadhar.Areas.AadharApi.Controllers
                 fname = item.firstName;
                 lname = item.lastName;
                 dbgender = Convert.ToInt32(item.gender);
-                dob = Convert.ToDateTime(item.dob);
+                dob = Convert.ToDateTime(item.dob).ToString();
                 dbbloodGroup = Convert.ToInt32(item.bloodGroup);
                 dbisGardad = item.isGaurded;
             }
@@ -151,19 +150,12 @@ namespace Aadhar.Areas.AadharApi.Controllers
                     break;
             }
 
-            if (dbisGardad)
-            {
-                orphan = "Yes";
-            }
-            else
-            {
-                orphan = "No";
-            }
+            orphan = (dbisGardad) ? "Yes" : "No";
 
             // What if user have more than three number? //
             // Don't let user enter more than two numbers. //
-            decimal pn = 0;
             string email = null;
+            string pn = null;
 
             var Contectdata = from qaz in db.ContectMasters where (qaz.id == id && qaz.isPrimary == false) select qaz;
 
@@ -175,7 +167,7 @@ namespace Aadhar.Areas.AadharApi.Controllers
             {
                 foreach (var item in Contectdata)
                 {
-                    pn = Convert.ToDecimal(item.phoneNumber);
+                    pn = Convert.ToDecimal(item.phoneNumber).ToString();
                     email = item.emailId;
                 }
             }
@@ -232,14 +224,7 @@ namespace Aadhar.Areas.AadharApi.Controllers
                 dbIsLiveInPermentAddress = item.IsLiveInPermentAddress;
             }
             paddress = pma + ", " + pna + ", " + poa + ".";
-            if (dbIsLiveInPermentAddress)
-            {
-                liveThere = "Yes";
-            }
-            else
-            {
-                liveThere = "No";
-            }
+            liveThere = (dbIsLiveInPermentAddress) ? "Yes" : "No";
 
             string oma = null;
             string ona = null;
@@ -264,13 +249,13 @@ namespace Aadhar.Areas.AadharApi.Controllers
             }
             oaddress = oma + ", " + ona + ", " + ooa + ".";
 
+            var result = new { FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, GardianName = gardianname, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere, PresentAddress = oaddress, PresentCity = ocity, PresentPincode = opincode, Duration = duration };
+
             var result1 = new { FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere, PresentAddress = oaddress, PresentCity = ocity, PresentPincode = opincode, Duration = duration };
 
             var result2 = new { FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, GardianName = gardianname, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere };
 
             var result3 = new { FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere };
-
-            var result = new { FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, GardianName = gardianname, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere, PresentAddress = oaddress, PresentCity = ocity, PresentPincode = opincode, Duration = duration };
 
             if (dbisGardad)
             {
@@ -294,7 +279,6 @@ namespace Aadhar.Areas.AadharApi.Controllers
                     return Ok(result1);
                 }
             }
-            //return Ok(result);
         }
     }
 }
