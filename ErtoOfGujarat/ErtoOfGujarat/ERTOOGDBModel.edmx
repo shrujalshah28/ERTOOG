@@ -1,0 +1,1117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ERTOOGDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AppointmentDateMaster">
+          <Key>
+            <PropertyRef Name="pKey" />
+          </Key>
+          <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="totalCount" Type="int" />
+          <Property Name="vanue" Type="int" />
+        </EntityType>
+        <EntityType Name="AppointmentMaster">
+          <Key>
+            <PropertyRef Name="appointmentId" />
+          </Key>
+          <Property Name="appointmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="timeOfAppointment" Type="int" />
+        </EntityType>
+        <EntityType Name="AppointmentTimeMaster">
+          <Key>
+            <PropertyRef Name="pkey" />
+          </Key>
+          <Property Name="pkey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="int" Nullable="false" />
+          <Property Name="timeSlot" Type="int" Nullable="false" />
+          <Property Name="totalCount" Type="int" />
+        </EntityType>
+        <EntityType Name="AuthorizePerson">
+          <Key>
+            <PropertyRef Name="jobId" />
+          </Key>
+          <Property Name="jobId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="destination" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="userName" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="75" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContectMaster">
+          <Key>
+            <PropertyRef Name="pKey" />
+          </Key>
+          <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="phoneNumber" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="emailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="isPrimary" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DigitalInfoMaster">
+          <Key>
+            <PropertyRef Name="pkey" />
+          </Key>
+          <Property Name="pkey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="photo" Type="varbinary(max)" />
+          <Property Name="lThumb" Type="varbinary(max)" />
+          <Property Name="rThumb" Type="varbinary(max)" />
+          <Property Name="lFingers" Type="varbinary(max)" />
+          <Property Name="rFingers" Type="varbinary(max)" />
+          <Property Name="signature" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="ErtoMaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uniqueId" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="gender" Type="int" Nullable="false" />
+          <Property Name="dob" Type="date" Nullable="false" />
+          <Property Name="bloodGroup" Type="int" Nullable="false" />
+          <Property Name="isGaurded" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExternalIdentityMaster">
+          <Key>
+            <PropertyRef Name="pKey" />
+          </Key>
+          <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="idenityType" Type="int" Nullable="false" />
+          <Property Name="identityNo" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GardianMaster">
+          <Key>
+            <PropertyRef Name="pKey" />
+          </Key>
+          <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="typeGardian" Type="int" />
+          <Property Name="gFirstName" Type="nvarchar" MaxLength="25" />
+          <Property Name="gMiddleName" Type="nvarchar" MaxLength="25" />
+          <Property Name="gLastName" Type="nvarchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="LicenseMaster">
+          <Key>
+            <PropertyRef Name="licenseNo" />
+          </Key>
+          <Property Name="licenseNo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="licenseType" Type="int" Nullable="false" />
+          <Property Name="validThrough" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="validFrom" Type="date" Nullable="false" />
+          <Property Name="validTill" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PermentAddressMaster">
+          <Key>
+            <PropertyRef Name="pKey" />
+          </Key>
+          <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="mainAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="nearByAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="optionalAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="city" Type="nvarchar" MaxLength="25" />
+          <Property Name="pincode" Type="numeric" Precision="6" Scale="0" />
+          <Property Name="IsLiveInPermentAddress" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersentAddressMaster">
+          <Key>
+            <PropertyRef Name="pKey" />
+          </Key>
+          <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="mainAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="nearByAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="optionalAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="city" Type="nvarchar" MaxLength="25" />
+          <Property Name="pincode" Type="numeric" Precision="6" Scale="0" />
+          <Property Name="duration" Type="int" />
+        </EntityType>
+        <EntityType Name="ResponceMaster">
+          <Key>
+            <PropertyRef Name="pKey" />
+          </Key>
+          <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aadharNo" Type="numeric" Precision="12" Scale="0" Nullable="false" />
+          <Property Name="uniqueId" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="requestId" Type="int" />
+          <Property Name="age" Type="int" />
+          <Property Name="phoneNumber" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="emailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="mOTP" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="eOTP" Type="numeric" Precision="6" Scale="0" />
+        </EntityType>
+        <EntityType Name="TestResultMaster">
+          <Key>
+            <PropertyRef Name="pKey" />
+          </Key>
+          <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="learningLicenseTestResult" Type="bit" />
+          <Property Name="learningLicenseTestCount" Type="int" />
+          <Property Name="permentLicenseTestResult" Type="bit" />
+          <Property Name="permentLicenseTestCount" Type="int" />
+        </EntityType>
+        <EntityType Name="vanueMaster">
+          <Key>
+            <PropertyRef Name="pKey" />
+          </Key>
+          <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vanueName" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VerificationMaster">
+          <Key>
+            <PropertyRef Name="pkey" />
+          </Key>
+          <Property Name="pkey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="verifyWhom" Type="int" />
+          <Property Name="verifyBy" Type="int" />
+          <Property Name="verifiedAt" Type="date" />
+          <Property Name="verified" Type="bit" />
+        </EntityType>
+        <Association Name="FK__Appointme__timeO__03F0984C">
+          <End Role="AppointmentTimeMaster" Type="Self.AppointmentTimeMaster" Multiplicity="0..1" />
+          <End Role="AppointmentMaster" Type="Self.AppointmentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppointmentTimeMaster">
+              <PropertyRef Name="pkey" />
+            </Principal>
+            <Dependent Role="AppointmentMaster">
+              <PropertyRef Name="timeOfAppointment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__vanue__7B5B524B">
+          <End Role="vanueMaster" Type="Self.vanueMaster" Multiplicity="0..1" />
+          <End Role="AppointmentDateMaster" Type="Self.AppointmentDateMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vanueMaster">
+              <PropertyRef Name="pKey" />
+            </Principal>
+            <Dependent Role="AppointmentDateMaster">
+              <PropertyRef Name="vanue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointmen__date__7E37BEF6">
+          <End Role="AppointmentDateMaster" Type="Self.AppointmentDateMaster" Multiplicity="1" />
+          <End Role="AppointmentTimeMaster" Type="Self.AppointmentTimeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppointmentDateMaster">
+              <PropertyRef Name="pKey" />
+            </Principal>
+            <Dependent Role="AppointmentTimeMaster">
+              <PropertyRef Name="date" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AppointmentM__id__02FC7413">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="AppointmentMaster" Type="Self.AppointmentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AppointmentMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AuthorizePer__id__6383C8BA">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="AuthorizePerson" Type="Self.AuthorizePerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AuthorizePerson">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContectMaste__id__534D60F1">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="ContectMaster" Type="Self.ContectMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ContectMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DigitalInfoM__id__59FA5E80">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="DigitalInfoMaster" Type="Self.DigitalInfoMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DigitalInfoMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExternalIden__id__6D0D32F4">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="ExternalIdentityMaster" Type="Self.ExternalIdentityMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ExternalIdentityMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GardianMaste__id__5629CD9C">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="GardianMaster" Type="Self.GardianMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GardianMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LicenseMaste__id__74AE54BC">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="LicenseMaster" Type="Self.LicenseMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LicenseMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PermentAddre__id__5CD6CB2B">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="PermentAddressMaster" Type="Self.PermentAddressMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PermentAddressMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersentAddre__id__5FB337D6">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="PersentAddressMaster" Type="Self.PersentAddressMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PersentAddressMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TestResultMa__id__06CD04F7">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="TestResultMaster" Type="Self.TestResultMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TestResultMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Verificat__verif__66603565">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="0..1" />
+          <End Role="VerificationMaster" Type="Self.VerificationMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="VerificationMaster">
+              <PropertyRef Name="verifyWhom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Verificat__verif__6754599E">
+          <End Role="AuthorizePerson" Type="Self.AuthorizePerson" Multiplicity="0..1" />
+          <End Role="VerificationMaster" Type="Self.VerificationMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AuthorizePerson">
+              <PropertyRef Name="jobId" />
+            </Principal>
+            <Dependent Role="VerificationMaster">
+              <PropertyRef Name="verifyBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ERTOOGDBModelStoreContainer">
+          <EntitySet Name="AppointmentDateMaster" EntityType="Self.AppointmentDateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppointmentMaster" EntityType="Self.AppointmentMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppointmentTimeMaster" EntityType="Self.AppointmentTimeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuthorizePerson" EntityType="Self.AuthorizePerson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContectMaster" EntityType="Self.ContectMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DigitalInfoMaster" EntityType="Self.DigitalInfoMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ErtoMaster" EntityType="Self.ErtoMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExternalIdentityMaster" EntityType="Self.ExternalIdentityMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GardianMaster" EntityType="Self.GardianMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LicenseMaster" EntityType="Self.LicenseMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PermentAddressMaster" EntityType="Self.PermentAddressMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersentAddressMaster" EntityType="Self.PersentAddressMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResponceMaster" EntityType="Self.ResponceMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestResultMaster" EntityType="Self.TestResultMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vanueMaster" EntityType="Self.vanueMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VerificationMaster" EntityType="Self.VerificationMaster" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Appointme__timeO__03F0984C" Association="Self.FK__Appointme__timeO__03F0984C">
+            <End Role="AppointmentTimeMaster" EntitySet="AppointmentTimeMaster" />
+            <End Role="AppointmentMaster" EntitySet="AppointmentMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__vanue__7B5B524B" Association="Self.FK__Appointme__vanue__7B5B524B">
+            <End Role="vanueMaster" EntitySet="vanueMaster" />
+            <End Role="AppointmentDateMaster" EntitySet="AppointmentDateMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointmen__date__7E37BEF6" Association="Self.FK__Appointmen__date__7E37BEF6">
+            <End Role="AppointmentDateMaster" EntitySet="AppointmentDateMaster" />
+            <End Role="AppointmentTimeMaster" EntitySet="AppointmentTimeMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AppointmentM__id__02FC7413" Association="Self.FK__AppointmentM__id__02FC7413">
+            <End Role="ErtoMaster" EntitySet="ErtoMaster" />
+            <End Role="AppointmentMaster" EntitySet="AppointmentMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AuthorizePer__id__6383C8BA" Association="Self.FK__AuthorizePer__id__6383C8BA">
+            <End Role="ErtoMaster" EntitySet="ErtoMaster" />
+            <End Role="AuthorizePerson" EntitySet="AuthorizePerson" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContectMaste__id__534D60F1" Association="Self.FK__ContectMaste__id__534D60F1">
+            <End Role="ErtoMaster" EntitySet="ErtoMaster" />
+            <End Role="ContectMaster" EntitySet="ContectMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DigitalInfoM__id__59FA5E80" Association="Self.FK__DigitalInfoM__id__59FA5E80">
+            <End Role="ErtoMaster" EntitySet="ErtoMaster" />
+            <End Role="DigitalInfoMaster" EntitySet="DigitalInfoMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExternalIden__id__6D0D32F4" Association="Self.FK__ExternalIden__id__6D0D32F4">
+            <End Role="ErtoMaster" EntitySet="ErtoMaster" />
+            <End Role="ExternalIdentityMaster" EntitySet="ExternalIdentityMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GardianMaste__id__5629CD9C" Association="Self.FK__GardianMaste__id__5629CD9C">
+            <End Role="ErtoMaster" EntitySet="ErtoMaster" />
+            <End Role="GardianMaster" EntitySet="GardianMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LicenseMaste__id__74AE54BC" Association="Self.FK__LicenseMaste__id__74AE54BC">
+            <End Role="ErtoMaster" EntitySet="ErtoMaster" />
+            <End Role="LicenseMaster" EntitySet="LicenseMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PermentAddre__id__5CD6CB2B" Association="Self.FK__PermentAddre__id__5CD6CB2B">
+            <End Role="ErtoMaster" EntitySet="ErtoMaster" />
+            <End Role="PermentAddressMaster" EntitySet="PermentAddressMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersentAddre__id__5FB337D6" Association="Self.FK__PersentAddre__id__5FB337D6">
+            <End Role="ErtoMaster" EntitySet="ErtoMaster" />
+            <End Role="PersentAddressMaster" EntitySet="PersentAddressMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TestResultMa__id__06CD04F7" Association="Self.FK__TestResultMa__id__06CD04F7">
+            <End Role="ErtoMaster" EntitySet="ErtoMaster" />
+            <End Role="TestResultMaster" EntitySet="TestResultMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Verificat__verif__66603565" Association="Self.FK__Verificat__verif__66603565">
+            <End Role="ErtoMaster" EntitySet="ErtoMaster" />
+            <End Role="VerificationMaster" EntitySet="VerificationMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Verificat__verif__6754599E" Association="Self.FK__Verificat__verif__6754599E">
+            <End Role="AuthorizePerson" EntitySet="AuthorizePerson" />
+            <End Role="VerificationMaster" EntitySet="VerificationMaster" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ERTOOGDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AppointmentDateMaster">
+          <Key>
+            <PropertyRef Name="pKey" />
+          </Key>
+          <Property Name="pKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="totalCount" Type="Int32" />
+          <Property Name="vanue" Type="Int32" />
+          <NavigationProperty Name="vanueMaster" Relationship="Self.FK__Appointme__vanue__7B5B524B" FromRole="AppointmentDateMaster" ToRole="vanueMaster" />
+          <NavigationProperty Name="AppointmentTimeMasters" Relationship="Self.FK__Appointmen__date__7E37BEF6" FromRole="AppointmentDateMaster" ToRole="AppointmentTimeMaster" />
+        </EntityType>
+        <EntityType Name="AppointmentMaster">
+          <Key>
+            <PropertyRef Name="appointmentId" />
+          </Key>
+          <Property Name="appointmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="timeOfAppointment" Type="Int32" />
+          <NavigationProperty Name="AppointmentTimeMaster" Relationship="Self.FK__Appointme__timeO__03F0984C" FromRole="AppointmentMaster" ToRole="AppointmentTimeMaster" />
+          <NavigationProperty Name="ErtoMaster" Relationship="Self.FK__AppointmentM__id__02FC7413" FromRole="AppointmentMaster" ToRole="ErtoMaster" />
+        </EntityType>
+        <EntityType Name="AppointmentTimeMaster">
+          <Key>
+            <PropertyRef Name="pkey" />
+          </Key>
+          <Property Name="pkey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="Int32" Nullable="false" />
+          <Property Name="timeSlot" Type="Int32" Nullable="false" />
+          <Property Name="totalCount" Type="Int32" />
+          <NavigationProperty Name="AppointmentDateMaster" Relationship="Self.FK__Appointmen__date__7E37BEF6" FromRole="AppointmentTimeMaster" ToRole="AppointmentDateMaster" />
+          <NavigationProperty Name="AppointmentMasters" Relationship="Self.FK__Appointme__timeO__03F0984C" FromRole="AppointmentTimeMaster" ToRole="AppointmentMaster" />
+        </EntityType>
+        <EntityType Name="AuthorizePerson">
+          <Key>
+            <PropertyRef Name="jobId" />
+          </Key>
+          <Property Name="jobId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="destination" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="userName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ErtoMaster" Relationship="Self.FK__AuthorizePer__id__6383C8BA" FromRole="AuthorizePerson" ToRole="ErtoMaster" />
+          <NavigationProperty Name="VerificationMasters" Relationship="Self.FK__Verificat__verif__6754599E" FromRole="AuthorizePerson" ToRole="VerificationMaster" />
+        </EntityType>
+        <EntityType Name="ContectMaster">
+          <Key>
+            <PropertyRef Name="pKey" />
+          </Key>
+          <Property Name="pKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="phoneNumber" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="emailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isPrimary" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ErtoMaster" Relationship="Self.FK__ContectMaste__id__534D60F1" FromRole="ContectMaster" ToRole="ErtoMaster" />
+        </EntityType>
+        <EntityType Name="DigitalInfoMaster">
+          <Key>
+            <PropertyRef Name="pkey" />
+          </Key>
+          <Property Name="pkey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="lThumb" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="rThumb" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="lFingers" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="rFingers" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="signature" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="ErtoMaster" Relationship="Self.FK__DigitalInfoM__id__59FA5E80" FromRole="DigitalInfoMaster" ToRole="ErtoMaster" />
+        </EntityType>
+        <EntityType Name="ErtoMaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uniqueId" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="gender" Type="Int32" Nullable="false" />
+          <Property Name="dob" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="bloodGroup" Type="Int32" Nullable="false" />
+          <Property Name="isGaurded" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AppointmentMasters" Relationship="Self.FK__AppointmentM__id__02FC7413" FromRole="ErtoMaster" ToRole="AppointmentMaster" />
+          <NavigationProperty Name="AuthorizePersons" Relationship="Self.FK__AuthorizePer__id__6383C8BA" FromRole="ErtoMaster" ToRole="AuthorizePerson" />
+          <NavigationProperty Name="ContectMasters" Relationship="Self.FK__ContectMaste__id__534D60F1" FromRole="ErtoMaster" ToRole="ContectMaster" />
+          <NavigationProperty Name="DigitalInfoMasters" Relationship="Self.FK__DigitalInfoM__id__59FA5E80" FromRole="ErtoMaster" ToRole="DigitalInfoMaster" />
+          <NavigationProperty Name="ExternalIdentityMasters" Relationship="Self.FK__ExternalIden__id__6D0D32F4" FromRole="ErtoMaster" ToRole="ExternalIdentityMaster" />
+          <NavigationProperty Name="GardianMasters" Relationship="Self.FK__GardianMaste__id__5629CD9C" FromRole="ErtoMaster" ToRole="GardianMaster" />
+          <NavigationProperty Name="LicenseMasters" Relationship="Self.FK__LicenseMaste__id__74AE54BC" FromRole="ErtoMaster" ToRole="LicenseMaster" />
+          <NavigationProperty Name="PermentAddressMasters" Relationship="Self.FK__PermentAddre__id__5CD6CB2B" FromRole="ErtoMaster" ToRole="PermentAddressMaster" />
+          <NavigationProperty Name="PersentAddressMasters" Relationship="Self.FK__PersentAddre__id__5FB337D6" FromRole="ErtoMaster" ToRole="PersentAddressMaster" />
+          <NavigationProperty Name="TestResultMasters" Relationship="Self.FK__TestResultMa__id__06CD04F7" FromRole="ErtoMaster" ToRole="TestResultMaster" />
+          <NavigationProperty Name="VerificationMasters" Relationship="Self.FK__Verificat__verif__66603565" FromRole="ErtoMaster" ToRole="VerificationMaster" />
+        </EntityType>
+        <EntityType Name="ExternalIdentityMaster">
+          <Key>
+            <PropertyRef Name="pKey" />
+          </Key>
+          <Property Name="pKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="idenityType" Type="Int32" Nullable="false" />
+          <Property Name="identityNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ErtoMaster" Relationship="Self.FK__ExternalIden__id__6D0D32F4" FromRole="ExternalIdentityMaster" ToRole="ErtoMaster" />
+        </EntityType>
+        <EntityType Name="GardianMaster">
+          <Key>
+            <PropertyRef Name="pKey" />
+          </Key>
+          <Property Name="pKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="typeGardian" Type="Int32" />
+          <Property Name="gFirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="gMiddleName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="gLastName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ErtoMaster" Relationship="Self.FK__GardianMaste__id__5629CD9C" FromRole="GardianMaster" ToRole="ErtoMaster" />
+        </EntityType>
+        <EntityType Name="LicenseMaster">
+          <Key>
+            <PropertyRef Name="licenseNo" />
+          </Key>
+          <Property Name="licenseNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="licenseType" Type="Int32" Nullable="false" />
+          <Property Name="validThrough" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="validFrom" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="validTill" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="ErtoMaster" Relationship="Self.FK__LicenseMaste__id__74AE54BC" FromRole="LicenseMaster" ToRole="ErtoMaster" />
+        </EntityType>
+        <EntityType Name="PermentAddressMaster">
+          <Key>
+            <PropertyRef Name="pKey" />
+          </Key>
+          <Property Name="pKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="mainAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nearByAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="optionalAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="pincode" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="IsLiveInPermentAddress" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ErtoMaster" Relationship="Self.FK__PermentAddre__id__5CD6CB2B" FromRole="PermentAddressMaster" ToRole="ErtoMaster" />
+        </EntityType>
+        <EntityType Name="PersentAddressMaster">
+          <Key>
+            <PropertyRef Name="pKey" />
+          </Key>
+          <Property Name="pKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="mainAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nearByAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="optionalAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="pincode" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="duration" Type="Int32" />
+          <NavigationProperty Name="ErtoMaster" Relationship="Self.FK__PersentAddre__id__5FB337D6" FromRole="PersentAddressMaster" ToRole="ErtoMaster" />
+        </EntityType>
+        <EntityType Name="ResponceMaster">
+          <Key>
+            <PropertyRef Name="pKey" />
+          </Key>
+          <Property Name="pKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aadharNo" Type="Decimal" Precision="12" Scale="0" Nullable="false" />
+          <Property Name="uniqueId" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="requestId" Type="Int32" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="phoneNumber" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="emailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mOTP" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="eOTP" Type="Decimal" Precision="6" Scale="0" />
+        </EntityType>
+        <EntityType Name="TestResultMaster">
+          <Key>
+            <PropertyRef Name="pKey" />
+          </Key>
+          <Property Name="pKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="learningLicenseTestResult" Type="Boolean" />
+          <Property Name="learningLicenseTestCount" Type="Int32" />
+          <Property Name="permentLicenseTestResult" Type="Boolean" />
+          <Property Name="permentLicenseTestCount" Type="Int32" />
+          <NavigationProperty Name="ErtoMaster" Relationship="Self.FK__TestResultMa__id__06CD04F7" FromRole="TestResultMaster" ToRole="ErtoMaster" />
+        </EntityType>
+        <EntityType Name="vanueMaster">
+          <Key>
+            <PropertyRef Name="pKey" />
+          </Key>
+          <Property Name="pKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vanueName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AppointmentDateMasters" Relationship="Self.FK__Appointme__vanue__7B5B524B" FromRole="vanueMaster" ToRole="AppointmentDateMaster" />
+        </EntityType>
+        <EntityType Name="VerificationMaster">
+          <Key>
+            <PropertyRef Name="pkey" />
+          </Key>
+          <Property Name="pkey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="verifyWhom" Type="Int32" />
+          <Property Name="verifyBy" Type="Int32" />
+          <Property Name="verifiedAt" Type="DateTime" Precision="0" />
+          <Property Name="verified" Type="Boolean" />
+          <NavigationProperty Name="AuthorizePerson" Relationship="Self.FK__Verificat__verif__6754599E" FromRole="VerificationMaster" ToRole="AuthorizePerson" />
+          <NavigationProperty Name="ErtoMaster" Relationship="Self.FK__Verificat__verif__66603565" FromRole="VerificationMaster" ToRole="ErtoMaster" />
+        </EntityType>
+        <Association Name="FK__Appointme__vanue__7B5B524B">
+          <End Role="vanueMaster" Type="Self.vanueMaster" Multiplicity="0..1" />
+          <End Role="AppointmentDateMaster" Type="Self.AppointmentDateMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vanueMaster">
+              <PropertyRef Name="pKey" />
+            </Principal>
+            <Dependent Role="AppointmentDateMaster">
+              <PropertyRef Name="vanue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointmen__date__7E37BEF6">
+          <End Role="AppointmentDateMaster" Type="Self.AppointmentDateMaster" Multiplicity="1" />
+          <End Role="AppointmentTimeMaster" Type="Self.AppointmentTimeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppointmentDateMaster">
+              <PropertyRef Name="pKey" />
+            </Principal>
+            <Dependent Role="AppointmentTimeMaster">
+              <PropertyRef Name="date" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__timeO__03F0984C">
+          <End Role="AppointmentTimeMaster" Type="Self.AppointmentTimeMaster" Multiplicity="0..1" />
+          <End Role="AppointmentMaster" Type="Self.AppointmentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppointmentTimeMaster">
+              <PropertyRef Name="pkey" />
+            </Principal>
+            <Dependent Role="AppointmentMaster">
+              <PropertyRef Name="timeOfAppointment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AppointmentM__id__02FC7413">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="AppointmentMaster" Type="Self.AppointmentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AppointmentMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AuthorizePer__id__6383C8BA">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="AuthorizePerson" Type="Self.AuthorizePerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AuthorizePerson">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Verificat__verif__6754599E">
+          <End Role="AuthorizePerson" Type="Self.AuthorizePerson" Multiplicity="0..1" />
+          <End Role="VerificationMaster" Type="Self.VerificationMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AuthorizePerson">
+              <PropertyRef Name="jobId" />
+            </Principal>
+            <Dependent Role="VerificationMaster">
+              <PropertyRef Name="verifyBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContectMaste__id__534D60F1">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="ContectMaster" Type="Self.ContectMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ContectMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DigitalInfoM__id__59FA5E80">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="DigitalInfoMaster" Type="Self.DigitalInfoMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DigitalInfoMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExternalIden__id__6D0D32F4">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="ExternalIdentityMaster" Type="Self.ExternalIdentityMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ExternalIdentityMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GardianMaste__id__5629CD9C">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="GardianMaster" Type="Self.GardianMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GardianMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LicenseMaste__id__74AE54BC">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="LicenseMaster" Type="Self.LicenseMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LicenseMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PermentAddre__id__5CD6CB2B">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="PermentAddressMaster" Type="Self.PermentAddressMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PermentAddressMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersentAddre__id__5FB337D6">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="PersentAddressMaster" Type="Self.PersentAddressMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PersentAddressMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TestResultMa__id__06CD04F7">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="1" />
+          <End Role="TestResultMaster" Type="Self.TestResultMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TestResultMaster">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Verificat__verif__66603565">
+          <End Role="ErtoMaster" Type="Self.ErtoMaster" Multiplicity="0..1" />
+          <End Role="VerificationMaster" Type="Self.VerificationMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ErtoMaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="VerificationMaster">
+              <PropertyRef Name="verifyWhom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ERTOOGDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AppointmentDateMasters" EntityType="Self.AppointmentDateMaster" />
+          <EntitySet Name="AppointmentMasters" EntityType="Self.AppointmentMaster" />
+          <EntitySet Name="AppointmentTimeMasters" EntityType="Self.AppointmentTimeMaster" />
+          <EntitySet Name="AuthorizePersons" EntityType="Self.AuthorizePerson" />
+          <EntitySet Name="ContectMasters" EntityType="Self.ContectMaster" />
+          <EntitySet Name="DigitalInfoMasters" EntityType="Self.DigitalInfoMaster" />
+          <EntitySet Name="ErtoMasters" EntityType="Self.ErtoMaster" />
+          <EntitySet Name="ExternalIdentityMasters" EntityType="Self.ExternalIdentityMaster" />
+          <EntitySet Name="GardianMasters" EntityType="Self.GardianMaster" />
+          <EntitySet Name="LicenseMasters" EntityType="Self.LicenseMaster" />
+          <EntitySet Name="PermentAddressMasters" EntityType="Self.PermentAddressMaster" />
+          <EntitySet Name="PersentAddressMasters" EntityType="Self.PersentAddressMaster" />
+          <EntitySet Name="ResponceMasters" EntityType="Self.ResponceMaster" />
+          <EntitySet Name="TestResultMasters" EntityType="Self.TestResultMaster" />
+          <EntitySet Name="vanueMasters" EntityType="Self.vanueMaster" />
+          <EntitySet Name="VerificationMasters" EntityType="Self.VerificationMaster" />
+          <AssociationSet Name="FK__Appointme__vanue__7B5B524B" Association="Self.FK__Appointme__vanue__7B5B524B">
+            <End Role="vanueMaster" EntitySet="vanueMasters" />
+            <End Role="AppointmentDateMaster" EntitySet="AppointmentDateMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointmen__date__7E37BEF6" Association="Self.FK__Appointmen__date__7E37BEF6">
+            <End Role="AppointmentDateMaster" EntitySet="AppointmentDateMasters" />
+            <End Role="AppointmentTimeMaster" EntitySet="AppointmentTimeMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__timeO__03F0984C" Association="Self.FK__Appointme__timeO__03F0984C">
+            <End Role="AppointmentTimeMaster" EntitySet="AppointmentTimeMasters" />
+            <End Role="AppointmentMaster" EntitySet="AppointmentMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AppointmentM__id__02FC7413" Association="Self.FK__AppointmentM__id__02FC7413">
+            <End Role="ErtoMaster" EntitySet="ErtoMasters" />
+            <End Role="AppointmentMaster" EntitySet="AppointmentMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AuthorizePer__id__6383C8BA" Association="Self.FK__AuthorizePer__id__6383C8BA">
+            <End Role="ErtoMaster" EntitySet="ErtoMasters" />
+            <End Role="AuthorizePerson" EntitySet="AuthorizePersons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Verificat__verif__6754599E" Association="Self.FK__Verificat__verif__6754599E">
+            <End Role="AuthorizePerson" EntitySet="AuthorizePersons" />
+            <End Role="VerificationMaster" EntitySet="VerificationMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContectMaste__id__534D60F1" Association="Self.FK__ContectMaste__id__534D60F1">
+            <End Role="ErtoMaster" EntitySet="ErtoMasters" />
+            <End Role="ContectMaster" EntitySet="ContectMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DigitalInfoM__id__59FA5E80" Association="Self.FK__DigitalInfoM__id__59FA5E80">
+            <End Role="ErtoMaster" EntitySet="ErtoMasters" />
+            <End Role="DigitalInfoMaster" EntitySet="DigitalInfoMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExternalIden__id__6D0D32F4" Association="Self.FK__ExternalIden__id__6D0D32F4">
+            <End Role="ErtoMaster" EntitySet="ErtoMasters" />
+            <End Role="ExternalIdentityMaster" EntitySet="ExternalIdentityMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GardianMaste__id__5629CD9C" Association="Self.FK__GardianMaste__id__5629CD9C">
+            <End Role="ErtoMaster" EntitySet="ErtoMasters" />
+            <End Role="GardianMaster" EntitySet="GardianMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LicenseMaste__id__74AE54BC" Association="Self.FK__LicenseMaste__id__74AE54BC">
+            <End Role="ErtoMaster" EntitySet="ErtoMasters" />
+            <End Role="LicenseMaster" EntitySet="LicenseMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PermentAddre__id__5CD6CB2B" Association="Self.FK__PermentAddre__id__5CD6CB2B">
+            <End Role="ErtoMaster" EntitySet="ErtoMasters" />
+            <End Role="PermentAddressMaster" EntitySet="PermentAddressMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersentAddre__id__5FB337D6" Association="Self.FK__PersentAddre__id__5FB337D6">
+            <End Role="ErtoMaster" EntitySet="ErtoMasters" />
+            <End Role="PersentAddressMaster" EntitySet="PersentAddressMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TestResultMa__id__06CD04F7" Association="Self.FK__TestResultMa__id__06CD04F7">
+            <End Role="ErtoMaster" EntitySet="ErtoMasters" />
+            <End Role="TestResultMaster" EntitySet="TestResultMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Verificat__verif__66603565" Association="Self.FK__Verificat__verif__66603565">
+            <End Role="ErtoMaster" EntitySet="ErtoMasters" />
+            <End Role="VerificationMaster" EntitySet="VerificationMasters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ERTOOGDBModelStoreContainer" CdmEntityContainer="ERTOOGDBEntities">
+          <EntitySetMapping Name="AppointmentDateMasters">
+            <EntityTypeMapping TypeName="ERTOOGDBModel.AppointmentDateMaster">
+              <MappingFragment StoreEntitySet="AppointmentDateMaster">
+                <ScalarProperty Name="pKey" ColumnName="pKey" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="totalCount" ColumnName="totalCount" />
+                <ScalarProperty Name="vanue" ColumnName="vanue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppointmentMasters">
+            <EntityTypeMapping TypeName="ERTOOGDBModel.AppointmentMaster">
+              <MappingFragment StoreEntitySet="AppointmentMaster">
+                <ScalarProperty Name="appointmentId" ColumnName="appointmentId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="timeOfAppointment" ColumnName="timeOfAppointment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppointmentTimeMasters">
+            <EntityTypeMapping TypeName="ERTOOGDBModel.AppointmentTimeMaster">
+              <MappingFragment StoreEntitySet="AppointmentTimeMaster">
+                <ScalarProperty Name="pkey" ColumnName="pkey" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="timeSlot" ColumnName="timeSlot" />
+                <ScalarProperty Name="totalCount" ColumnName="totalCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuthorizePersons">
+            <EntityTypeMapping TypeName="ERTOOGDBModel.AuthorizePerson">
+              <MappingFragment StoreEntitySet="AuthorizePerson">
+                <ScalarProperty Name="jobId" ColumnName="jobId" />
+                <ScalarProperty Name="destination" ColumnName="destination" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContectMasters">
+            <EntityTypeMapping TypeName="ERTOOGDBModel.ContectMaster">
+              <MappingFragment StoreEntitySet="ContectMaster">
+                <ScalarProperty Name="pKey" ColumnName="pKey" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+                <ScalarProperty Name="emailId" ColumnName="emailId" />
+                <ScalarProperty Name="isPrimary" ColumnName="isPrimary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DigitalInfoMasters">
+            <EntityTypeMapping TypeName="ERTOOGDBModel.DigitalInfoMaster">
+              <MappingFragment StoreEntitySet="DigitalInfoMaster">
+                <ScalarProperty Name="pkey" ColumnName="pkey" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="lThumb" ColumnName="lThumb" />
+                <ScalarProperty Name="rThumb" ColumnName="rThumb" />
+                <ScalarProperty Name="lFingers" ColumnName="lFingers" />
+                <ScalarProperty Name="rFingers" ColumnName="rFingers" />
+                <ScalarProperty Name="signature" ColumnName="signature" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErtoMasters">
+            <EntityTypeMapping TypeName="ERTOOGDBModel.ErtoMaster">
+              <MappingFragment StoreEntitySet="ErtoMaster">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uniqueId" ColumnName="uniqueId" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="bloodGroup" ColumnName="bloodGroup" />
+                <ScalarProperty Name="isGaurded" ColumnName="isGaurded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExternalIdentityMasters">
+            <EntityTypeMapping TypeName="ERTOOGDBModel.ExternalIdentityMaster">
+              <MappingFragment StoreEntitySet="ExternalIdentityMaster">
+                <ScalarProperty Name="pKey" ColumnName="pKey" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idenityType" ColumnName="idenityType" />
+                <ScalarProperty Name="identityNo" ColumnName="identityNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GardianMasters">
+            <EntityTypeMapping TypeName="ERTOOGDBModel.GardianMaster">
+              <MappingFragment StoreEntitySet="GardianMaster">
+                <ScalarProperty Name="pKey" ColumnName="pKey" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="typeGardian" ColumnName="typeGardian" />
+                <ScalarProperty Name="gFirstName" ColumnName="gFirstName" />
+                <ScalarProperty Name="gMiddleName" ColumnName="gMiddleName" />
+                <ScalarProperty Name="gLastName" ColumnName="gLastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LicenseMasters">
+            <EntityTypeMapping TypeName="ERTOOGDBModel.LicenseMaster">
+              <MappingFragment StoreEntitySet="LicenseMaster">
+                <ScalarProperty Name="licenseNo" ColumnName="licenseNo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="licenseType" ColumnName="licenseType" />
+                <ScalarProperty Name="validThrough" ColumnName="validThrough" />
+                <ScalarProperty Name="validFrom" ColumnName="validFrom" />
+                <ScalarProperty Name="validTill" ColumnName="validTill" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PermentAddressMasters">
+            <EntityTypeMapping TypeName="ERTOOGDBModel.PermentAddressMaster">
+              <MappingFragment StoreEntitySet="PermentAddressMaster">
+                <ScalarProperty Name="pKey" ColumnName="pKey" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="mainAddress" ColumnName="mainAddress" />
+                <ScalarProperty Name="nearByAddress" ColumnName="nearByAddress" />
+                <ScalarProperty Name="optionalAddress" ColumnName="optionalAddress" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="pincode" ColumnName="pincode" />
+                <ScalarProperty Name="IsLiveInPermentAddress" ColumnName="IsLiveInPermentAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersentAddressMasters">
+            <EntityTypeMapping TypeName="ERTOOGDBModel.PersentAddressMaster">
+              <MappingFragment StoreEntitySet="PersentAddressMaster">
+                <ScalarProperty Name="pKey" ColumnName="pKey" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="mainAddress" ColumnName="mainAddress" />
+                <ScalarProperty Name="nearByAddress" ColumnName="nearByAddress" />
+                <ScalarProperty Name="optionalAddress" ColumnName="optionalAddress" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="pincode" ColumnName="pincode" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResponceMasters">
+            <EntityTypeMapping TypeName="ERTOOGDBModel.ResponceMaster">
+              <MappingFragment StoreEntitySet="ResponceMaster">
+                <ScalarProperty Name="pKey" ColumnName="pKey" />
+                <ScalarProperty Name="aadharNo" ColumnName="aadharNo" />
+                <ScalarProperty Name="uniqueId" ColumnName="uniqueId" />
+                <ScalarProperty Name="requestId" ColumnName="requestId" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+                <ScalarProperty Name="emailId" ColumnName="emailId" />
+                <ScalarProperty Name="mOTP" ColumnName="mOTP" />
+                <ScalarProperty Name="eOTP" ColumnName="eOTP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestResultMasters">
+            <EntityTypeMapping TypeName="ERTOOGDBModel.TestResultMaster">
+              <MappingFragment StoreEntitySet="TestResultMaster">
+                <ScalarProperty Name="pKey" ColumnName="pKey" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="learningLicenseTestResult" ColumnName="learningLicenseTestResult" />
+                <ScalarProperty Name="learningLicenseTestCount" ColumnName="learningLicenseTestCount" />
+                <ScalarProperty Name="permentLicenseTestResult" ColumnName="permentLicenseTestResult" />
+                <ScalarProperty Name="permentLicenseTestCount" ColumnName="permentLicenseTestCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vanueMasters">
+            <EntityTypeMapping TypeName="ERTOOGDBModel.vanueMaster">
+              <MappingFragment StoreEntitySet="vanueMaster">
+                <ScalarProperty Name="pKey" ColumnName="pKey" />
+                <ScalarProperty Name="vanueName" ColumnName="vanueName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VerificationMasters">
+            <EntityTypeMapping TypeName="ERTOOGDBModel.VerificationMaster">
+              <MappingFragment StoreEntitySet="VerificationMaster">
+                <ScalarProperty Name="pkey" ColumnName="pkey" />
+                <ScalarProperty Name="verifyWhom" ColumnName="verifyWhom" />
+                <ScalarProperty Name="verifyBy" ColumnName="verifyBy" />
+                <ScalarProperty Name="verifiedAt" ColumnName="verifiedAt" />
+                <ScalarProperty Name="verified" ColumnName="verified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

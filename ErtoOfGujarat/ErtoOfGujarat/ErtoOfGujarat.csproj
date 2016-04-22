@@ -124,6 +124,8 @@
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Spatial, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.7.0\lib\net40\System.Spatial.dll</HintPath>
       <Private>True</Private>
@@ -239,22 +241,85 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppointmentDateMaster.cs">
+      <DependentUpon>ERTOOGDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppointmentMaster.cs">
+      <DependentUpon>ERTOOGDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppointmentTimeMaster.cs">
+      <DependentUpon>ERTOOGDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="AuthorizePerson.cs">
+      <DependentUpon>ERTOOGDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContectMaster.cs">
+      <DependentUpon>ERTOOGDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DigitalInfoMaster.cs">
+      <DependentUpon>ERTOOGDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ErtoMaster.cs">
+      <DependentUpon>ERTOOGDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ERTOOGDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERTOOGDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ERTOOGDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERTOOGDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ERTOOGDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERTOOGDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalIdentityMaster.cs">
+      <DependentUpon>ERTOOGDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GardianMaster.cs">
+      <DependentUpon>ERTOOGDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="LicenseMaster.cs">
+      <DependentUpon>ERTOOGDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="PermentAddressMaster.cs">
+      <DependentUpon>ERTOOGDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersentAddressMaster.cs">
+      <DependentUpon>ERTOOGDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResponceMaster.cs">
+      <DependentUpon>ERTOOGDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="TestResultMaster.cs">
+      <DependentUpon>ERTOOGDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vanueMaster.cs">
+      <DependentUpon>ERTOOGDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VerificationMaster.cs">
+      <DependentUpon>ERTOOGDBModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-datepicker.css" />
@@ -304,6 +369,16 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="ERTOOGDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ERTOOGDBModel.edmx</DependentUpon>
+      <LastGenOutput>ERTOOGDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ERTOOGDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ERTOOGDBModel.edmx</DependentUpon>
+      <LastGenOutput>ERTOOGDBModel.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -1114,6 +1189,13 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <EntityDeploy Include="ERTOOGDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ERTOOGDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="ERTOOGDBModel.edmx.diagram">
+      <DependentUpon>ERTOOGDBModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
@@ -1246,6 +1328,9 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-2.2.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

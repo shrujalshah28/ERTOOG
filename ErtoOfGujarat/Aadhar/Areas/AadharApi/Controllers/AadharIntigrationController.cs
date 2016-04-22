@@ -11,6 +11,7 @@ using System.Data.Entity.Infrastructure;
 using Aadhar;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using System.Net.Mail;
 
 namespace Aadhar.Areas.AadharApi.Controllers
 {
@@ -68,12 +69,30 @@ namespace Aadhar.Areas.AadharApi.Controllers
         public IHttpActionResult ConfirmRequest(int rId, bool conformatiton)
         {
             var data = from asd in db.OTPMasters where asd.requestId == rId select asd;
+            //var contectdata = from zxc in db.ContectMasters where zxc.id == Convert.ToInt32(from qwe in db.IntigrationMasters where qwe.requestId == rId select new { qwe.id }) && zxc.isPrimary == true select zxc;
+            var contectdata = from zxc in db.ContectMasters join qwe in db.IntigrationMasters on zxc.id equals qwe.id where qwe.requestId == rId where zxc.isPrimary == true select zxc;
+            decimal pno = 0;
+            string email = null;
+            foreach (var item in contectdata)
+            {
+                pno = Convert.ToDecimal(item.phoneNumber);
+                email = item.emailId;
+            }
             int motp = 0, eotp = 0;
             foreach (var item in data)
             {
                 motp = Convert.ToInt32(item.mOTP);
                 eotp = Convert.ToInt32(item.eOTP);
             }
+
+            MailMessage mm = new MailMessage("shrujalshah28@gmail.com", email);
+            mm.Subject = "Your OTP";
+            mm.Body = @"<p> This is system generated Email.</p></br><table style=""width:10%""><tr><td> Mobile OTP </td><td> " + motp + "</td></tr><tr><td> Email OTP </td><td>" + eotp + "</td></tr></table></br><p> Call Shrujal and confirm your OTP.</p>";
+            mm.IsBodyHtml = true;
+
+            SmtpClient sc = new SmtpClient();
+            sc.Send(mm);
+
             // Logic for send OTP to User.
             var result = new { requestId = rId, mobileOTP = motp, emailOTP = eotp };
             return Ok(result);
@@ -249,13 +268,13 @@ namespace Aadhar.Areas.AadharApi.Controllers
             }
             oaddress = oma + ", " + ona + ", " + ooa + ".";
 
-            var result = new { FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, GardianName = gardianname, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere, PresentAddress = oaddress, PresentCity = ocity, PresentPincode = opincode, Duration = duration };
+            var result = new { RequestId = rId, FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, GardianName = gardianname, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere, PresentAddress = oaddress, PresentCity = ocity, PresentPincode = opincode, Duration = duration };
 
-            var result1 = new { FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere, PresentAddress = oaddress, PresentCity = ocity, PresentPincode = opincode, Duration = duration };
+            var result1 = new { RequestId = rId, FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere, PresentAddress = oaddress, PresentCity = ocity, PresentPincode = opincode, Duration = duration };
 
-            var result2 = new { FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, GardianName = gardianname, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere };
+            var result2 = new { RequestId = rId, FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, GardianName = gardianname, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere };
 
-            var result3 = new { FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere };
+            var result3 = new { RequestId = rId, FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere };
 
             if (dbisGardad)
             {

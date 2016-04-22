@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a5fb69161d334a65aa1922088166485f" Name="Diagram1">
+        <EntityTypeShape EntityType="ERTOOGDBModel.AppointmentDateMaster" Width="1.5" PointX="0.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERTOOGDBModel.AppointmentMaster" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERTOOGDBModel.AppointmentTimeMaster" Width="1.5" PointX="0.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERTOOGDBModel.AuthorizePerson" Width="1.5" PointX="2.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERTOOGDBModel.ContectMaster" Width="1.5" PointX="6.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERTOOGDBModel.DigitalInfoMaster" Width="1.5" PointX="8.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERTOOGDBModel.ErtoMaster" Width="1.5" PointX="4.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERTOOGDBModel.ExternalIdentityMaster" Width="1.5" PointX="9.875" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERTOOGDBModel.GardianMaster" Width="1.5" PointX="8.125" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERTOOGDBModel.LicenseMaster" Width="1.5" PointX="9.875" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERTOOGDBModel.PermentAddressMaster" Width="1.5" PointX="2.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERTOOGDBModel.PersentAddressMaster" Width="1.5" PointX="6.375" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERTOOGDBModel.ResponceMaster" Width="1.5" PointX="9.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERTOOGDBModel.TestResultMaster" Width="1.5" PointX="4.125" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERTOOGDBModel.vanueMaster" Width="1.5" PointX="0.5" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERTOOGDBModel.VerificationMaster" Width="1.5" PointX="2.5" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="ERTOOGDBModel.FK__Appointme__vanue__7B5B524B" ManuallyRouted="false" />
+        <AssociationConnector Association="ERTOOGDBModel.FK__Appointmen__date__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="ERTOOGDBModel.FK__Appointme__timeO__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="ERTOOGDBModel.FK__AppointmentM__id__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="ERTOOGDBModel.FK__AuthorizePer__id__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="ERTOOGDBModel.FK__Verificat__verif__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="ERTOOGDBModel.FK__ContectMaste__id__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="ERTOOGDBModel.FK__DigitalInfoM__id__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="ERTOOGDBModel.FK__ExternalIden__id__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="ERTOOGDBModel.FK__GardianMaste__id__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="ERTOOGDBModel.FK__LicenseMaste__id__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="ERTOOGDBModel.FK__PermentAddre__id__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="ERTOOGDBModel.FK__PersentAddre__id__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="ERTOOGDBModel.FK__TestResultMa__id__06CD04F7" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="ERTOOGDBModel.FK__Verificat__verif__66603565" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
