@@ -255,6 +255,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\License\Controllers\LearningLicenseController.cs" />
+    <Compile Include="Areas\License\LicenseAreaRegistration.cs" />
     <Compile Include="AuthorizePerson.cs">
       <DependentUpon>ERTOOGDBModel.tt</DependentUpon>
     </Compile>
@@ -1162,6 +1164,9 @@
     <Content Include="Scripts\i18n\angular-locale_zh.js" />
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-2.2.1.js" />
     <Content Include="Scripts\jquery-2.2.1.min.js" />
     <Content Include="Content\bootstrap-datepicker3.standalone.min.css.map" />
@@ -1196,6 +1201,11 @@
     <Content Include="ERTOOGDBModel.edmx.diagram">
       <DependentUpon>ERTOOGDBModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\License\Views\web.config" />
+    <Content Include="Areas\License\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\License\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\License\Views\LearningLicense\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
@@ -1271,6 +1281,7 @@
     <Content Include="Scripts\locales\bootstrap-datepicker.vi.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-CN.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
@@ -1315,6 +1326,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\License\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
