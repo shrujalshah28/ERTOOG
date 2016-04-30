@@ -106,7 +106,7 @@ create table ResponceMaster
 	uniqueId nvarchar(15) unique not null,
 	requestId int unique,
 	age int,
-	phoneNumber numeric(10),
+	phoneNumber numeric(10,0),
 	emailId nvarchar(50),
 	mOTP numeric(4),
 	eOTP numeric(6),

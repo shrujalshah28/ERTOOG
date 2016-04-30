@@ -1,0 +1,92 @@
+﻿@model ErtoOfGujarat.ResponceMaster
+
+
+<script src="~/Scripts/jquery-2.2.1.min.js"></script>
+
+@{
+    ViewBag.Title = "ConfirmDetail";
+    string uid = ViewBag.uid;
+    string pno = ViewBag.pno;
+    string email = ViewBag.email;
+    string lpno = ViewBag.lpno;
+    string lemail = ViewBag.lemail;
+}
+
+<h2>ConfirmDetail</h2>
+
+@using (Html.BeginForm("ConfirmDetail", "LearningLicense", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>ResponceMaster</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.uniqueId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("uniqueid", uid)
+                @Html.ValidationMessageFor(model => model.uniqueId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.phoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.phoneNumber, new { htmlAttributes = new { placeholder = lpno, @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.aadharNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emailId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.emailId, new { htmlAttributes = new { placeholder = lemail, @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.aadharNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input id="btnconfirm" type="submit" value="Create" class="btn btn-default" onclick="confirm()" />
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    @*var email=@email;
+    var mn=@pno;*@
+    $(document).ready(function () {
+        $('#btnconfirm').click(function () {
+            var email = @email;
+            var mn = @pno;
+            if ($('phoneNumber').val() == mn && $('emailId').val() == email) {
+                return true;
+            }
+            else {
+                alert("Phone number or Email Id is not correct. Please Enter again.");
+                return false;
+            }
+        });
+    });
+
+    //$('.btnconfirm').on('click', function () {
+    //    if ($('phoneNumber').val() == pno && $('emailId').val() == email) {
+    //        return true;
+    //    }
+    //    else {
+    //        alert("Phone number or Email Id is not correct. Please Enter again.")
+    //    }
+    //});
+    //function confirm() {
+    //    if ($('phoneNumber').val() == pno && $('emailId').val() == email) {
+    //        return true;
+    //    }
+    //    else {
+    //        alert("Phone number or Email Id is not correct. Please Enter again.")
+    //    }
+    //}
+</script>
