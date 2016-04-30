@@ -13,5 +13,11 @@ namespace ErtoOfGujarat.Areas.License.Controllers
         {
             return View();
         }
+
+        public ActionResult New()
+        {
+
+            return View();
+        }
     }
 }
