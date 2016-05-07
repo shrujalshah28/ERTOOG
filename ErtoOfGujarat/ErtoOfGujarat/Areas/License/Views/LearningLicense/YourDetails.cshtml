@@ -1,0 +1,210 @@
+﻿@model ErtoOfGujarat.Areas.License.Models.UserDetails
+
+@{
+    ViewBag.Title = "YourDetails";
+
+    string uid = ViewBag.uid;
+}
+
+<h2>YourDetails</h2>
+
+
+@using (Html.BeginForm("YourDetails", "LearningLicense", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>ResponceMaster</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.uniqueId, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                Unique Id @Html.TextBox("uniqueid", uid)
+                @*@Html.ValidationMessageFor(model => model.uniqueId, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        @*Comment out in final release*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RequestId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("Requestid", Model.RequestId)
+                @Html.ValidationMessageFor(model => model.RequestId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("FirstName", Model.FirstName)
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("LastName", Model.LastName)
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.gender, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("gender", Model.gender)
+                @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("DOB", Model.DOB)
+                @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BloodGroup, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("BloodGroup", Model.BloodGroup)
+                @Html.ValidationMessageFor(model => model.BloodGroup, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Orphan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("Orphan", Model.Orphan)
+                @Html.ValidationMessageFor(model => model.Orphan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @if (Model.SecondaryEmailId != null)
+        {
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SecondaryPhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBox("SecondaryPhoneNumber", Model.SecondaryPhoneNumber)
+                    @Html.ValidationMessageFor(model => model.SecondaryPhoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SecondaryEmailId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBox("SecondaryEmailId", Model.SecondaryEmailId)
+                    @Html.ValidationMessageFor(model => model.SecondaryEmailId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        }
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fatherName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("fatherName", Model.fatherName)
+                @Html.ValidationMessageFor(model => model.fatherName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MotherName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("MotherName", Model.MotherName)
+                @Html.ValidationMessageFor(model => model.MotherName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @if (Model.Orphan == "Yes")
+        {
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.GardianName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBox("GardianName", Model.GardianName)
+                    @Html.ValidationMessageFor(model => model.GardianName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        }
+        <div class="form-group">
+            @Html.LabelFor(model => model.PermentAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("PermentAddress", Model.PermentAddress)
+                @Html.ValidationMessageFor(model => model.PermentAddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PermentCity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("PermentCity", Model.PermentCity)
+                @Html.ValidationMessageFor(model => model.PermentCity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PermentPincode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("PermentPincode", Model.PermentPincode)
+                @Html.ValidationMessageFor(model => model.PermentPincode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LivingThere, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("LivingThere", Model.LivingThere)
+                @Html.ValidationMessageFor(model => model.LivingThere, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @if (Model.LivingThere == "No")
+        {
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PresentAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBox("PresentAddress", Model.PresentAddress)
+                    @Html.ValidationMessageFor(model => model.PresentAddress, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PresentCity, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBox("PresentCity", Model.PresentCity)
+                    @Html.ValidationMessageFor(model => model.PresentCity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PresentPincode, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBox("PresentPincode", Model.PresentPincode)
+                    @Html.ValidationMessageFor(model => model.PresentPincode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Duration, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBox("Duration", Model.Duration)
+                    @Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

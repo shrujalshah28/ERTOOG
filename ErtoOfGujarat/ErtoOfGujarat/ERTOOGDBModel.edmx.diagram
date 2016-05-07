@@ -15,10 +15,10 @@
         <EntityTypeShape EntityType="ERTOOGDBModel.ExternalIdentityMaster" Width="1.5" PointX="9.875" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ERTOOGDBModel.GardianMaster" Width="1.5" PointX="8.125" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ERTOOGDBModel.LicenseMaster" Width="1.5" PointX="9.875" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERTOOGDBModel.PermentAddressMaster" Width="1.5" PointX="2.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERTOOGDBModel.PermentAddressMaster" Width="1.5" PointX="2.375" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ERTOOGDBModel.PersentAddressMaster" Width="1.5" PointX="6.375" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ERTOOGDBModel.ResponceMaster" Width="1.5" PointX="9.875" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERTOOGDBModel.TestResultMaster" Width="1.5" PointX="4.125" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERTOOGDBModel.TestResultMaster" Width="1.5" PointX="4.125" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ERTOOGDBModel.vanueMaster" Width="1.5" PointX="0.5" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="ERTOOGDBModel.VerificationMaster" Width="1.5" PointX="2.5" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="ERTOOGDBModel.FK__Appointme__vanue__7B5B524B" ManuallyRouted="false" />

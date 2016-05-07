@@ -87,7 +87,7 @@ namespace Aadhar.Areas.AadharApi.Controllers
 
             MailMessage mm = new MailMessage("shrujalshah28@gmail.com", email);
             mm.Subject = "Your OTP";
-            mm.Body = @"<p> This is system generated Email.</p></br><table style=""width:10%""><tr><td> Mobile OTP </td><td> " + motp + "</td></tr><tr><td> Email OTP </td><td>" + eotp + "</td></tr></table></br><p> Call Shrujal and confirm your OTP.</p>";
+            mm.Body = @"<p> This is system generated Email.</p></br><table style=""width:20%""><tr><td> Mobile OTP </td><td> " + motp + "</td></tr><tr><td> Email OTP </td><td>" + eotp + "</td></tr></table></br><p> Call Shrujal and confirm your OTP.</p>";
             mm.IsBodyHtml = true;
 
             SmtpClient sc = new SmtpClient();
@@ -270,34 +270,34 @@ namespace Aadhar.Areas.AadharApi.Controllers
 
             var result = new { RequestId = rId, FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, GardianName = gardianname, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere, PresentAddress = oaddress, PresentCity = ocity, PresentPincode = opincode, Duration = duration };
 
-            var result1 = new { RequestId = rId, FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere, PresentAddress = oaddress, PresentCity = ocity, PresentPincode = opincode, Duration = duration };
+            //var result1 = new { RequestId = rId, FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere, PresentAddress = oaddress, PresentCity = ocity, PresentPincode = opincode, Duration = duration };
+            //var result2 = new { RequestId = rId, FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, GardianName = gardianname, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere };
+            //var result3 = new { RequestId = rId, FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere };
 
-            var result2 = new { RequestId = rId, FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, GardianName = gardianname, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere };
+            //if (dbisGardad)
+            //{
+            //    if (dbIsLiveInPermentAddress)
+            //    {
+            //        return Ok(result2);
+            //    }
+            //    else
+            //    {
+            //        return Ok(result);
+            //    }
+            //}
+            //else
+            //{
+            //    if (dbIsLiveInPermentAddress)
+            //    {
+            //        return Ok(result3);
+            //    }
+            //    else
+            //    {
+            //        return Ok(result1);
+            //    }
+            //}
 
-            var result3 = new { RequestId = rId, FirstName = fname, LastName = lname, Gender = gender, DOB = dob, BloodGroup = bloodGroup, Orphan = orphan, SecondaryPhoneNumber = pn, SecondaryEmailId = email, FatherName = fathername, MotherName = mothername, PermentAddress = paddress, PermentCity = pcity, PermentPincode = ppincode, LivingThere = liveThere };
-
-            if (dbisGardad)
-            {
-                if (dbIsLiveInPermentAddress)
-                {
-                    return Ok(result2);
-                }
-                else
-                {
-                    return Ok(result);
-                }
-            }
-            else
-            {
-                if (dbIsLiveInPermentAddress)
-                {
-                    return Ok(result3);
-                }
-                else
-                {
-                    return Ok(result1);
-                }
-            }
+            return Ok(result);
         }
     }
 }
