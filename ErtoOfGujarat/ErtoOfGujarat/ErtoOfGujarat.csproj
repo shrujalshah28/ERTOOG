@@ -1174,6 +1174,10 @@
     <Content Include="Areas\License\Views\LearningLicense\ConfirmDetail.cshtml" />
     <Content Include="Areas\License\Views\LearningLicense\EnterOTP.cshtml" />
     <Content Include="Areas\License\Views\LearningLicense\SelectVanue.cshtml" />
+    <Content Include="Areas\License\Views\LearningLicense\PickADate.cshtml" />
+    <Content Include="Areas\License\Views\LearningLicense\ChooseTime.cshtml" />
+    <Content Include="Areas\License\Views\LearningLicense\ConfirmAppointment.cshtml" />
+    <Content Include="Areas\License\Views\LearningLicense\ThankYou.cshtml" />
     <None Include="Areas\License\Views\LearningLicense\YourDetails.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

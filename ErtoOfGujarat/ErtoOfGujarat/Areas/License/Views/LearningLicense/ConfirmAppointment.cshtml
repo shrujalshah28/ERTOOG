@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "ConfirmAppointment";
+
+    string uid = ViewBag.uid;
+    string vanue = ViewBag.vanue;
+    string selecteddate = ViewBag.selecteddate;
+    string selectedtime = ViewBag.selectedtime;
+}
+
+<h2>ConfirmAppointment</h2>
+
+@using (Html.BeginForm("ConfirmAppointment", "LearningLicense", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Selest Vanue</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.uniqueId, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                Unique Id @Html.TextBox("uniqueid", uid)
+                @*@Html.ValidationMessageFor(model => model.uniqueId, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.vanue, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                Vanue @Html.TextBox("vanue", vanue)
+                @*@Html.ValidationMessageFor(model => model.uniqueId, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.vanue, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                Date Selected @Html.TextBox("selecteddate", selecteddate)
+                @*@Html.ValidationMessageFor(model => model.uniqueId, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.vanue, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                Time Selected @Html.TextBox("selectedtime", selectedtime)
+                @*@Html.ValidationMessageFor(model => model.uniqueId, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
