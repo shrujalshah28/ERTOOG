@@ -85,13 +85,13 @@ namespace Aadhar.Areas.AadharApi.Controllers
                 eotp = Convert.ToInt32(item.eOTP);
             }
 
-            MailMessage mm = new MailMessage("shrujalshah28@gmail.com", email);
-            mm.Subject = "Your OTP";
-            mm.Body = @"<p> This is system generated Email.</p></br><table style=""width:20%""><tr><td> Mobile OTP </td><td> " + motp + "</td></tr><tr><td> Email OTP </td><td>" + eotp + "</td></tr></table></br><p> Call Shrujal and confirm your OTP.</p>";
-            mm.IsBodyHtml = true;
+            MailMessage _mailmessage = new MailMessage("shrujalshah28@gmail.com", email);
+            _mailmessage.Subject = "Your OTP";
+            _mailmessage.Body = @"<p> This is system generated Email.</p></br><table style=""width:20%""><tr><td> Mobile OTP </td><td> " + motp + "</td></tr><tr><td> Email OTP </td><td>" + eotp + "</td></tr></table></br><p> Call Shrujal and confirm your OTP.</p>";
+            _mailmessage.IsBodyHtml = true;
 
             SmtpClient sc = new SmtpClient();
-            sc.Send(mm);
+            sc.Send(_mailmessage);
 
             // Logic for send OTP to User.
             var result = new { requestId = rId, mobileOTP = motp, emailOTP = eotp };

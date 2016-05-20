@@ -329,6 +329,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets.css" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
     <Content Include="Content\bootstrap-datepicker.standalone.css" />
@@ -341,8 +342,18 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\dark.css" />
+    <Content Include="Content\default.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\gsdk-base.css" />
+    <Content Include="Content\layers.css" />
+    <Content Include="Content\light.css" />
+    <Content Include="Content\navigation.css" />
+    <Content Include="Content\pe-icon-7-stroke.css" />
+    <Content Include="Content\rtl.css" />
+    <Content Include="Content\settings.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -388,9 +399,25 @@
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular-2.html" />
+    <Content Include="fonts\glyphicons-halflings-regular-3.html" />
+    <Content Include="fonts\glyphicons-halflings-regular-4.html" />
+    <Content Include="fonts\glyphicons-halflings-regular-5.html" />
+    <Content Include="fonts\glyphicons-halflings-regular.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regulard41d.html" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\7.png" />
+    <Content Include="images\bg-01.jpg" />
+    <Content Include="images\bg-02.jpg" />
+    <Content Include="images\bg-05.jpg" />
+    <Content Include="images\road01.jpg" />
+    <Content Include="images\sec-bg-01.jpg" />
+    <Content Include="images\sec-bg-02.jpg" />
+    <Content Include="images\sec-bg-03.jpg" />
+    <Content Include="images\side-bg.jpg" />
+    <Content Include="images\sign.jpg" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -421,10 +448,12 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\assets.min.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\html5.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-et.js" />
@@ -1224,6 +1253,10 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\jquery.bootstrap.wizard.js" />
+    <Content Include="Scripts\jquery.themepunch.enablelog.js" />
+    <Content Include="Scripts\jquery.themepunch.revolution.min.js" />
+    <Content Include="Scripts\jquery.themepunch.tools.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -1302,6 +1335,17 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\revolution.extension.actions.min.js" />
+    <Content Include="Scripts\revolution.extension.carousel.min.js" />
+    <Content Include="Scripts\revolution.extension.kenburn.min.js" />
+    <Content Include="Scripts\revolution.extension.layeranimation.min.js" />
+    <Content Include="Scripts\revolution.extension.migration.min.js" />
+    <Content Include="Scripts\revolution.extension.navigation.min.js" />
+    <Content Include="Scripts\revolution.extension.parallax.min.js" />
+    <Content Include="Scripts\revolution.extension.slideanims.min.js" />
+    <Content Include="Scripts\revolution.extension.video.min.js" />
+    <Content Include="Scripts\script.js" />
+    <Content Include="Scripts\wizard.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

@@ -1,44 +1,165 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>@ViewBag.Title - ERTO | Transpotation System</title>
+    <meta name="description" content="ERTO | Transpotation System">
+    <meta name="author" content="Shrujal">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/Content/assets.css">
+
+    <link rel="stylesheet" href="~/Content/style.css">
+    <link id="theme_css" rel="stylesheet" href="~/Content/light.css">
+    <link rel="stylesheet" href="~/Content/pe-icon-7-stroke.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/settings.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/layers.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/navigation.css" type="text/css">
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="~/Scripts/html5.js"></script>
+    <![endif]-->
+    <!-- Skin CSS file -->
+    <link id="skin_css" rel="stylesheet" href="~/Content/default.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+    <div class="pageWrapper animsition">
+        <header class="top-head black-bg header-left" style="background-image:url('../../images/sign.jpg');background-size:cover">
+
+            <div class="video-overlay"></div>
+
+            <div class="relative zindx-9">
+                <!-- Logo start -->
+                <div class="logo">
+                    @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })<img alt="" src="~/images/7.png" /></a>*@
+                    <a href="@Url.Action("Index","Home", new { area = "" }) "><img alt="" src="~/images/7.png" /></a>
+                </div>
+                <!-- Logo end -->
+
+                <div class="responsive-nav">
+                    <!-- top navigation menu start -->
+                    <nav class="side-nav nav-animate to-bottom">
+                        <ul>
+                            <li class="mega-menu">
+                                @*<li class="mega-menu selected">*@
+                                @Html.ActionLink("Home","Index","Home",new { area = "" },null)
+                            </li>
+                            <li>
+                                <a href="#">Login</a>
+                                <ul>
+                                    <li>
+                                        <a href="LicenseHolderLogin.html"><i class="fa fa-user"></i>License Holder</a>
+                                    </li>
+                                    <li>
+                                        <a href="AuthorizePersonLogin.html" id="ap"><i class="fa fa-user-plus"></i>Authorized Person</a>
+                                    </li>
+                                    <li>
+                                        <a href="RtoManagerLogin.html"><i class="fa fa-user-secret"></i>RTO Manegement</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">License</a>
+                                <ul>
+                                    <li>
+                                        <a href="@Url.Action("Terms","LearningLicense",new { area = "License" })"><i class="fa fa-list-alt"></i>Learning License</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-list-alt"></i>Perment License</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Vehical</a>
+                                <ul>
+                                    <li><a href="coming-soon.html"><i class="fa fa-car"></i>Registration</a></li>
+                                    <li><a href="coming-soon.html"><i class="fa fa-th-list"></i>Number Plate</a></li>
+                                    <li><a href="coming-soon.html"><i class="fa fa-hand-o-right"></i>Ownership Tranfer</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="FAQ.html">FAQ</a>
+                            </li>
+                            <li class="mega-menu">
+                                <a href="ContectUs.html">Contact Us</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- top navigation menu end -->
+                    <!-- top search start -->
+                    <div class="top-search vis-search">
+                        <input type="text" name="t" placeholder="Type And Hit Enter..."><button name="b" class="main-color no-bg-btn"><i class="fa fa-search"></i></button>
+                    </div>
+                    <!-- top search end -->
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <div class="side-header-bottom">
+                        <ul class="social-list">
+                            <!--<li><a data-toggle="tooltip" data-placement="top" title="dribbble" href="#" class="fa fa-dribbble">dribbble</a></li>
+                            <li><a data-toggle="tooltip" data-placement="top" title="facebook" href="#" class="fa fa-facebook">facebook</a></li>
+                            <li><a data-toggle="tooltip" data-placement="top" title="linkedin" href="#" class="fa fa-linkedin">linkedin</a></li>
+                            <li><a data-toggle="tooltip" data-placement="top" title="skype" href="#" class="fa fa-skype">skype</a></li>
+                            <li><a data-toggle="tooltip" data-placement="top" title="twitter" href="#" class="fa fa-twitter">twitter</a></li>-->
+                        </ul>
+                        <div class="copyrights">© Copyrights <b class="main-color">ERTO</b> 2016. All rights reserved.</div>
+                    </div>
+
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
+
+        </header>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
+
+
+    <!-- Load JS plugins file -->
+    <script type="text/javascript" src="~/Scripts/assets.min.js"></script>
+
+    <!-- SLIDER REVOLUTION  -->
+    <!-- <script type="text/javascript" src="assets/revolution/js/jquery.themepunch.tools.min.js"></script> -->
+    @*<script type="text/javascript" src="assets/revolution/js/jquery.themepunch.revolution.min.js"></script>*@
+    <script type="text/javascript" src="~/Scripts/jquery.themepunch.revolution.min.js"></script>
+
+    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS
+        (Load Extensions only on Local File Systems !  +
+        The following part can be removed on Server for On Demand Loading) -->
+    <script type="text/javascript" src="~/Scripts/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/revolution.extension.carousel.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/revolution.extension.kenburn.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/revolution.extension.migration.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/revolution.extension.video.min.js"></script>
+    <!-- END SLIDER REVOLUTION 5.0 EXTENSIONS -->
+    <!-- general script file -->
+    <script type="text/javascript" src="~/Scripts/script.js"></script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
