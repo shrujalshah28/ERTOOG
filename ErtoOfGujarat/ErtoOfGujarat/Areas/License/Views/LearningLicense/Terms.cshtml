@@ -2,10 +2,10 @@
 @{
     ViewBag.Title = "Terms";
 }
-<script src="~/Scripts/jquery-2.2.1.min.js"></script>
-<script src="~/Scripts/bootstrap.min.js"></script>
+@*<script src="~/Scripts/jquery-2.2.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>*@
 <h2>Terms and Condition</h2>
-<div class="pre-scrollable text-justify">
+<div>
     <pre>
 1. General
 These Terms and Conditions ("Agreement") governs the use of the services ("Service") that are made available by Website.com Solutions Inc. ("Website.com", "we" or "us"). These Terms and Conditions represent the whole agreement and understanding between Website.com and the individual or entity who subscribes to our service ("Subscriber" or "you").
@@ -45,27 +45,41 @@ Website.com relies on the support of its sponsors and advertisers to help offset
 This Agreement, as may be updated from time to time and posted at http://www.website.com/terms-and-conditions/, represents the complete agreement and understanding between us with respect to the Service and supersedes any other written or oral agreement.
 </pre>
 </div>
+<br />
 @using (Html.BeginForm("Terms", "LearningLicense", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-    <div class="form-group">
-        @*@Html.CheckBox("Terms and Condition", true,new { @class = "checkbox" })*@
-        <div class="col-md-10 col-md-offset-2">
-            <h3>@Html.Label("By clickin on Accept butten you accept Terms and Condition")</h3>
-            @*</div>*@
-        </div>
+    <div class="label">
+        <p><h3 style="color:black">By clickin on Accept butten you accept Terms and Condition.</h3></p>
     </div>
-        <div class="form-group">
-            <div class="col-md-offset-4 col-md-10">
-                <input type="submit" class="btn btn-warning" value="Accept" id="btnterms" hidden="hidden" />
+
+    <div class="row">
+        <div class="form-group-sm">
+            <div class="col-lg-1 col-lg-offset-8">
+                <input type="submit" class="btn btn-grace" value="Accept" id="btnterms" />
             </div>
         </div>
+
+    </div>
+
+    @*<div class="form-group">
+        @Html.CheckBox("Terms and Condition", true,new { @class = "checkbox" })
+        @*<div class="col-md-10 col-md-offset-2">
+            <h3>@Html.Label("By clickin on Accept butten you accept Terms and Condition")</h3>*@
+            @*</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-10">
+            <input type="submit" class="btn btn-warning" value="Accept" id="btnterms" hidden="hidden" />
+        </div>
+    </div>*@
 }
-<script type="text/javascript">
-    $('#Terms_and_Condition').click(function () {
-        if ($(this).is(':checked')) {
-            $("#btnterms").show();
-        } else {
-            $("#btnterms").hide();
-        }
-    });
-</script>
+@*<script type="text/javascript">
+        $('#Terms_and_Condition').click(function () {
+            if ($(this).is(':checked')) {
+                $("#btnterms").show();
+            } else {
+                $("#btnterms").hide();
+            }
+        });
+    </script>*@

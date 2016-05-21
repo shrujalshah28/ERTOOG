@@ -66,10 +66,10 @@ namespace ErtoOfGujarat.Areas.License.Controllers
 
         // POST: License/LearningLicense/New
         [HttpPost]
-        public ActionResult New(string uniqueid, string aadharNo)
+        public ActionResult New(string uniqueId, string aadharNo)
         {
 
-            string url = "Aadhar/api/AadharApi/AadharIntigration/GetRequest?aadharNo=" + aadharNo + "&eUid=" + uniqueid + "&type=license";
+            string url = "Aadhar/api/AadharApi/AadharIntigration/GetRequest?aadharNo=" + aadharNo + "&eUid=" + uniqueId + "&type=license";
 
             using (var client = new HttpClient())
             {
@@ -92,7 +92,7 @@ namespace ErtoOfGujarat.Areas.License.Controllers
                     ResponceMaster _responcemaster = new ResponceMaster()
                     {
                         aadharNo = Convert.ToDecimal(aadharNo),
-                        uniqueId = uniqueid,
+                        uniqueId = uniqueId,
                         requestId = rid,
                         age = age,
                         phoneNumber = mno,
@@ -105,7 +105,7 @@ namespace ErtoOfGujarat.Areas.License.Controllers
                 }
             }
 
-            return RedirectToAction("ConfirmDetail", "LearningLicense", new { uid = uniqueid });
+            return RedirectToAction("ConfirmDetail", "LearningLicense", new { uid = uniqueId });
         }
 
         // GET: License/LearningLicense/ConfirmDetail
@@ -144,7 +144,7 @@ namespace ErtoOfGujarat.Areas.License.Controllers
 
         // POST: License/LearningLicense/ConfirmDetail
         [HttpPost]
-        public ActionResult ConfirmDetail(string uniqueid, FormCollection fc)
+        public ActionResult ConfirmDetail(string uniqueId, FormCollection fc)
         {
             string phoneNo = fc["phoneNumber"].ToString();
             string emailId = fc["emailId"].ToString();
@@ -153,7 +153,7 @@ namespace ErtoOfGujarat.Areas.License.Controllers
             string rid = null;
             string pno = null;
             string email = null;
-            var data = from asd in _db.ResponceMasters where asd.uniqueId == uniqueid select new { asd.pKey, asd.requestId, asd.phoneNumber, asd.emailId };
+            var data = from asd in _db.ResponceMasters where asd.uniqueId == uniqueId select new { asd.pKey, asd.requestId, asd.phoneNumber, asd.emailId };
             foreach (var item in data)
             {
                 pkey = item.pKey;
@@ -201,11 +201,11 @@ namespace ErtoOfGujarat.Areas.License.Controllers
                     }
                 }
 
-                return RedirectToAction("EnterOTP", "LearningLicense", new { uid = uniqueid });
+                return RedirectToAction("EnterOTP", "LearningLicense", new { uid = uniqueId });
             }
             else
             {
-                return RedirectToAction("ConfirmDetail", "LearningLicense", new { uid = uniqueid });
+                return RedirectToAction("ConfirmDetail", "LearningLicense", new { uid = uniqueId });
             }
         }
 
@@ -220,12 +220,12 @@ namespace ErtoOfGujarat.Areas.License.Controllers
 
         // POST: License/LearningLicense/EnterOTP
         [HttpPost]
-        public ActionResult EnterOTP(string uniqueid, int mOTP, int eOTP)
+        public ActionResult EnterOTP(string uniqueId, int mOTP, int eOTP)
         {
             int pkey = 0;
             int motp = 0;
             int eotp = 0;
-            var data = from asd in _db.ResponceMasters where asd.uniqueId == uniqueid select new { asd.pKey, asd.mOTP, asd.eOTP };
+            var data = from asd in _db.ResponceMasters where asd.uniqueId == uniqueId select new { asd.pKey, asd.mOTP, asd.eOTP };
             foreach (var item in data)
             {
                 pkey = item.pKey;
@@ -236,11 +236,11 @@ namespace ErtoOfGujarat.Areas.License.Controllers
             if (mOTP == motp && eOTP == eotp)
             {
                 // Data can fatch here and send to contoller
-                return RedirectToAction("YourDetails", "LearningLicense", new { uid = uniqueid });
+                return RedirectToAction("YourDetails", "LearningLicense", new { uid = uniqueId });
             }
             else
             {
-                return RedirectToAction("EnterOTP", "LearningLicense", new { uid = uniqueid });
+                return RedirectToAction("EnterOTP", "LearningLicense", new { uid = uniqueId });
             }
         }
 
@@ -281,7 +281,7 @@ namespace ErtoOfGujarat.Areas.License.Controllers
         public ActionResult YourDetails(string uid, UserDetails model)
         {
             // uid can be removed from argument.
-            string unid = Request["uniqueid"];
+            string unid = Request["uniqueId"];
 
             var data = from asd in _db.ResponceMasters where asd.uniqueId == unid select new { asd.aadharNo, asd.phoneNumber, asd.emailId };
             string aadharno = null;
@@ -539,7 +539,7 @@ namespace ErtoOfGujarat.Areas.License.Controllers
 
         // POST: License/LearningLicense/SelectVanue
         [HttpPost]
-        public ActionResult SelectVanue(string uniqueid, int vanue)
+        public ActionResult SelectVanue(string uniqueId, int vanue)
         {
             var data = from asd in _db.vanueMasters where asd.pKey == vanue select new { asd.vanueName };
             string place = null;
@@ -548,7 +548,7 @@ namespace ErtoOfGujarat.Areas.License.Controllers
                 place = item.vanueName;
             }
 
-            return RedirectToAction("PickADate", "LearningLicense", new { uid = uniqueid, vanue = place });
+            return RedirectToAction("PickADate", "LearningLicense", new { uid = uniqueId, vanue = place });
         }
 
         // GET: License/LearningLicense/PickADate
@@ -595,9 +595,9 @@ namespace ErtoOfGujarat.Areas.License.Controllers
 
         // POST: License/LearningLicense/PickADate
         [HttpPost]
-        public ActionResult PickADate(string uniqueid, string vanue, int datehash)
+        public ActionResult PickADate(string uniqueId, string vanue, int datehash)
         {
-            return RedirectToAction("ChooseTime", "LearningLicense", new { uid = uniqueid, vanue = vanue, dateid = datehash });
+            return RedirectToAction("ChooseTime", "LearningLicense", new { uid = uniqueId, vanue = vanue, dateid = datehash });
         }
 
         // GET: License/LearningLicense/ChooseTime
@@ -675,9 +675,9 @@ namespace ErtoOfGujarat.Areas.License.Controllers
 
         // POST: License/LearningLicense/ChooseTime
         [HttpPost]
-        public ActionResult ChooseTime(string uniqueid, string vanue, int datehash, int timehash)
+        public ActionResult ChooseTime(string uniqueId, string vanue, int datehash, int timehash)
         {
-            return RedirectToAction("ConfirmAppointment", "LearningLicense", new { uid = uniqueid, vanue = vanue, dateid = datehash, timeid = timehash });
+            return RedirectToAction("ConfirmAppointment", "LearningLicense", new { uid = uniqueId, vanue = vanue, dateid = datehash, timeid = timehash });
         }
 
         // GET: License/LearningLicense/ConfirmAppointment
@@ -714,7 +714,7 @@ namespace ErtoOfGujarat.Areas.License.Controllers
         [HttpPost]
         public ActionResult ConfirmAppointment(FormCollection fc)
         {
-            string uniqueid = fc["uniqueid"];
+            string uniqueid = fc["uniqueId"];
             string vanue = fc["vanue"];
             int datehash = Convert.ToInt32(fc["datehash"]);
             int timehash = Convert.ToInt32(fc["timehash"]);

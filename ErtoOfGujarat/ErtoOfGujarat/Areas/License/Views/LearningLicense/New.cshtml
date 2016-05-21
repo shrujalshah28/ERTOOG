@@ -1,29 +1,37 @@
 ﻿@model ErtoOfGujarat.ResponceMaster
 
 @{
-    ViewBag.Title = "New";
+    ViewBag.Title = "Enter Aadharcard No.";
 
     string uid = ViewBag.uid;
 }
 
-<h2>New</h2>
+<h2>New Learning License</h2>
 
-@using (Html.BeginForm("New","LearningLicense",FormMethod.Post, new { @class = "form-horizontal", role = "form" })) 
+@using (Html.BeginForm("New", "LearningLicense", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>ResponceMaster</h4>
+        <h4>Enter Aadharcard No.</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
             @Html.LabelFor(model => model.uniqueId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBox("uniqueid", uid)
+                @Html.TextBox("uniqueId", uid, new { @class = "form-control", @readonly= "readonly" })
                 @Html.ValidationMessageFor(model => model.uniqueId, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.uniqueId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" value="@uid" readonly="readonly" id="uniqueId" class="form-control" />
+                @Html.ValidationMessageFor(model => model.uniqueId, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.aadharNo, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -33,11 +41,11 @@
             </div>
         </div>
 
-        
+        <hr />
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Next" class="btn btn-default" />
             </div>
         </div>
     </div>

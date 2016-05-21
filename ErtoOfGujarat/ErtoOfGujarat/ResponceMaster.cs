@@ -11,17 +11,25 @@ namespace ErtoOfGujarat
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class ResponceMaster
     {
         public int pKey { get; set; }
+        [Display(Name ="Aadhar No.")]
         public decimal aadharNo { get; set; }
+        [Display(Name = "Unique Id")]
         public string uniqueId { get; set; }
+        [Display(Name = "Request Id")]
         public Nullable<int> requestId { get; set; }
+        [Display(Name = "Age")]
         public Nullable<int> age { get; set; }
+        [Display(Name = "Phone No.")]
         public Nullable<decimal> phoneNumber { get; set; }
+        [Display(Name = "Email Id")]
         public string emailId { get; set; }
+        [Display(Name = "Mobile OTP")]
         public Nullable<decimal> mOTP { get; set; }
+        [Display(Name = "Email OTP")]
         public Nullable<decimal> eOTP { get; set; }
     }
 }

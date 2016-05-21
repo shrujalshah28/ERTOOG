@@ -1,11 +1,11 @@
 ﻿@model ErtoOfGujarat.ResponceMaster
 
 @{
-    ViewBag.Title = "SelectVanue";
+    ViewBag.Title = "Select Vanue";
     string uid = ViewBag.uid;
 }
 
-<h2>SelectVanue</h2>
+<h2>New Appointment</h2>
 
 @using (Html.BeginForm("SelectVanue", "LearningLicense", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
@@ -19,24 +19,24 @@
         <div class="form-group">
             @Html.LabelFor(model => model.uniqueId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBox("uniqueid", uid)
+                @Html.TextBox("uniqueId", uid, new { @class = "form-control", @readonly = "readonly" })
                 @*@Html.ValidationMessageFor(model => model.uniqueId, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
-        
-            <div class="form-group">
-                @Html.Label("vanue","Vanue", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("vanue","Select Vanue")
-                    @*@Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })*@
-                </div>
-            </div>
 
-        
+        <div class="form-group">
+            @Html.Label("vanue", "Vanue", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("vanue", "Select Vanue")
+                @*@Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+        <hr />
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Next" class="btn btn-default" />
             </div>
         </div>
     </div>

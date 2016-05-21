@@ -7,7 +7,7 @@
     <meta name="description" content="ERTO | Transpotation System">
     <meta name="author" content="Shrujal">
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="~/Content/assets.css">
+    @*<link rel="stylesheet" href="~/Content/assets.css">*@
 
     <link rel="stylesheet" href="~/Content/style.css">
     <link id="theme_css" rel="stylesheet" href="~/Content/light.css">
@@ -24,7 +24,7 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
+<body class="image-container set-full-height" style="background-image: url('../../../../images/bg6.jpg')">
 
     <div class="pageWrapper animsition">
         <header class="top-head black-bg header-left" style="background-image:url('../../images/sign.jpg');background-size:cover">
@@ -45,7 +45,7 @@
                         <ul>
                             <li class="mega-menu">
                                 @*<li class="mega-menu selected">*@
-                                @Html.ActionLink("Home","Index","Home",new { area = "" },null)
+                                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)
                             </li>
                             <li>
                                 <a href="#">Login</a>
@@ -111,7 +111,6 @@
                     <br />
                     <br />
                     <br />
-                    <br />
                     <div class="side-header-bottom">
                         <ul class="social-list">
                             <!--<li><a data-toggle="tooltip" data-placement="top" title="dribbble" href="#" class="fa fa-dribbble">dribbble</a></li>
@@ -122,10 +121,8 @@
                         </ul>
                         <div class="copyrights">© Copyrights <b class="main-color">ERTO</b> 2016. All rights reserved.</div>
                     </div>
-
                 </div>
             </div>
-
         </header>
     </div>
     <div class="container body-content">
@@ -137,7 +134,7 @@
     <script type="text/javascript" src="~/Scripts/assets.min.js"></script>
 
     <!-- SLIDER REVOLUTION  -->
-    <!-- <script type="text/javascript" src="assets/revolution/js/jquery.themepunch.tools.min.js"></script> -->
+    @*<script type="text/javascript" src="~/Scripts/jquery.themepunch.tools.min.js"></script>*@
     @*<script type="text/javascript" src="assets/revolution/js/jquery.themepunch.revolution.min.js"></script>*@
     <script type="text/javascript" src="~/Scripts/jquery.themepunch.revolution.min.js"></script>
 
@@ -157,9 +154,9 @@
     <!-- general script file -->
     <script type="text/javascript" src="~/Scripts/script.js"></script>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)*@
 
 </body>
 </html>

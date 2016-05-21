@@ -1,6 +1,5 @@
-﻿
-@{
-    ViewBag.Title = "ChooseTime";
+﻿@{
+    ViewBag.Title = "Choose Time";
 
     string uid = ViewBag.uid;
     string vanue = ViewBag.vanue;
@@ -8,21 +7,21 @@
 }
 
 
-<h2>ChooseTime</h2>
+<h2>New Appointment</h2>
 
 @using (Html.BeginForm("ChooseTime", "LearningLicense", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Selest Vanue</h4>
+        <h4>Choose Time</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
             @*@Html.LabelFor(model => model.uniqueId, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
-                Unique Id @Html.TextBox("uniqueid", uid)
+                Unique Id @Html.TextBox("uniqueId", uid, new { @class = "form-control", @readonly = "readonly" })
                 @*@Html.ValidationMessageFor(model => model.uniqueId, "", new { @class = "text-danger" })*@
             </div>
         </div>
@@ -30,7 +29,7 @@
         <div class="form-group">
             @*@Html.LabelFor(model => model.vanue, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
-                Vanue @Html.TextBox("vanue", vanue)
+                Vanue @Html.TextBox("vanue", vanue, new { @class = "form-control", @readonly = "readonly" })
                 @*@Html.ValidationMessageFor(model => model.uniqueId, "", new { @class = "text-danger" })*@
             </div>
         </div>
@@ -38,7 +37,7 @@
         <div class="form-group">
             @*@Html.LabelFor(model => model.vanue, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
-                Date Selected @Html.TextBox("selecteddate", selecteddate)
+                Date Selected @Html.TextBox("selecteddate", selecteddate, new { @class = "form-control", @readonly = "readonly" })
                 @*@Html.ValidationMessageFor(model => model.uniqueId, "", new { @class = "text-danger" })*@
             </div>
         </div>
@@ -50,7 +49,7 @@
                 @*@Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })*@
             </div>
         </div>
-
+        <hr />
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
