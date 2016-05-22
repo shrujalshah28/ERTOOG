@@ -20,8 +20,9 @@
 
         <div class="form-group">
             @*@Html.LabelFor(model => model.uniqueId, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <p class="label"><h3>Unique Id</h3></p>
             <div class="col-md-10">
-                Unique Id @Html.TextBox("uniqueId", uid, new { @class = "form-control", @readonly = "readonly" })
+                @Html.TextBox("uniqueId", uid, new { @class = "form-control", @readonly = "readonly" })
                 @*@Html.ValidationMessageFor(model => model.uniqueId, "", new { @class = "text-danger" })*@
             </div>
         </div>
@@ -39,12 +40,14 @@
         <table>
             <tr>
                 <td class="label">
-                    Name :
+                    <h3 style="color:black">
+                        Name :
+                    </h3>
                 </td>
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
+                        <div class="col-md-8">
                             @Html.TextBox("FirstName", Model.FirstName, new { @class = "form-control", @readonly = "readonly" })
                             @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
                         </div>
@@ -53,7 +56,7 @@
                 <td>
                     <div class="form-group">
                         @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
+                        <div class="col-md-8">
                             @Html.TextBox("LastName", Model.LastName, new { @class = "form-control", @readonly = "readonly" })
                             @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                         </div>
@@ -146,7 +149,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PermentAddress, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBox("PermentAddress", Model.PermentAddress, new { @class = "form-control", @readonly = "readonly" })
+                @Html.TextArea("PermentAddress", Model.PermentAddress, new { @class = "form-control", @readonly = "readonly" })
                 @Html.ValidationMessageFor(model => model.PermentAddress, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -181,7 +184,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.PresentAddress, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.TextBox("PresentAddress", Model.PresentAddress, new { @class = "form-control", @readonly = "readonly" })
+                    @Html.TextArea("PresentAddress", Model.PresentAddress, new { @class = "form-control", @readonly = "readonly" })
                     @Html.ValidationMessageFor(model => model.PresentAddress, "", new { @class = "text-danger" })
                 </div>
             </div>

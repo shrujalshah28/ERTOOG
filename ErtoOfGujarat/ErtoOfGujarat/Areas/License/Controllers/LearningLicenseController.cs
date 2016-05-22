@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -675,9 +676,32 @@ namespace ErtoOfGujarat.Areas.License.Controllers
 
         // POST: License/LearningLicense/ChooseTime
         [HttpPost]
-        public ActionResult ChooseTime(string uniqueId, string vanue, int datehash, int timehash)
+        public ActionResult ChooseTime(string uniqueId, string vanue, string selecteddate, int timehash)
         {
-            return RedirectToAction("ConfirmAppointment", "LearningLicense", new { uid = uniqueId, vanue = vanue, dateid = datehash, timeid = timehash });
+            DateTime date = Convert.ToDateTime(selecteddate);
+            int vanueid = 0;
+            switch (vanue)
+            {
+                case "RTO Circle":
+                    vanueid = 1;
+                    break;
+                case "Bodakdev":
+                    vanueid = 2;
+                    break;
+                case "Vastral":
+                    vanueid = 3;
+                    break;
+                default:
+                    vanueid = 1;
+                    break;
+            }
+            int dateid = 0;
+            var data = from asd in _db.AppointmentDateMasters where (asd.date == date && asd.vanue == vanueid) select new { asd.pKey };
+            foreach (var item in data)
+            {
+                dateid = item.pKey;
+            }
+            return RedirectToAction("ConfirmAppointment", "LearningLicense", new { uid = uniqueId, vanue = vanue, dateid = dateid, timeid = timehash });
         }
 
         // GET: License/LearningLicense/ConfirmAppointment
@@ -695,7 +719,7 @@ namespace ErtoOfGujarat.Areas.License.Controllers
             }
             ViewBag.selecteddate = selecteddate;
             string selectedtime = null;
-            DateTime temp = new DateTime(13, 05, 2016, 09, 30, 00);
+            DateTime temp = new DateTime(2016, 05, 13, 09, 30, 00);
             if (timeid < 5)
             {
                 selectedtime = (temp.AddMinutes(timeid * 30)).Hour.ToString() + ":" + (temp.AddMinutes(timeid * 30)).Minute.ToString() + "-" + (temp.AddMinutes((timeid + 1) * 30)).Hour.ToString() + ":" + (temp.AddMinutes((timeid + 1) * 30)).Minute.ToString();
@@ -716,8 +740,6 @@ namespace ErtoOfGujarat.Areas.License.Controllers
         {
             string uniqueid = fc["uniqueId"];
             string vanue = fc["vanue"];
-            int datehash = Convert.ToInt32(fc["datehash"]);
-            int timehash = Convert.ToInt32(fc["timehash"]);
 
             int vanueid = 0;
             var data = from asd in _db.vanueMasters where asd.vanueName == vanue select new { asd.pKey };
@@ -726,25 +748,92 @@ namespace ErtoOfGujarat.Areas.License.Controllers
                 vanueid = item.pKey;
             }
 
+            DateTime tempdate = Convert.ToDateTime(fc["selecteddate"]);
+            int dateid = 0;
+            var data1 = from asd in _db.AppointmentDateMasters where (asd.date == tempdate && asd.vanue == vanueid) select new { asd.pKey };
+            foreach (var item in data1)
+            {
+                dateid = item.pKey;
+            }
+
+            int datehash = dateid;
+
+            int timehash = 0;
+            switch (fc["selectedtime"])
+            {
+                case "10:0-10:30":
+                    timehash = 1;
+                    break;
+                case "10:30-11:0":
+                    timehash = 2;
+                    break;
+                case "11:0-11:30":
+                    timehash = 3;
+                    break;
+                case "11:30-12:0":
+                    timehash = 4;
+                    break;
+                case "12:30-13:0":
+                    timehash = 5;
+                    break;
+                case "13:0-13:30":
+                    timehash = 6;
+                    break;
+                case "13:30-14:0":
+                    timehash = 7;
+                    break;
+                case "14:0-14:30":
+                    timehash = 8;
+                    break;
+                case "14:30-15:0":
+                    timehash = 9;
+                    break;
+                case "15:0-15:30":
+                    timehash = 10;
+                    break;
+                case "15:30-16:0":
+                    timehash = 11;
+                    break;
+                case "16:0-16:30":
+                    timehash = 12;
+                    break;
+                case "16:30-17:0":
+                    timehash = 13;
+                    break;
+                case "17:0-17:30":
+                    timehash = 14;
+                    break;
+                case "17:30-18:0":
+                    timehash = 15;
+                    break;
+                default:
+                    break;
+            }
+
             var datedata = from qwe in _db.AppointmentDateMasters where qwe.pKey == datehash && qwe.vanue == vanueid select qwe;
-            int totalcount = 0;
+            int temptotalcount = 0;
             DateTime date = DateTime.Now;
             foreach (var item in datedata)
             {
                 date = item.date;
-                totalcount = (int)item.totalCount;
+                temptotalcount = (int)item.totalCount;
             }
 
             AppointmentDateMaster _appointmentdatedaster = new AppointmentDateMaster()
             {
                 pKey = datehash,
-                totalCount = (totalcount + 1)
+                date = date,
+                totalCount = (temptotalcount + 1),
+                vanue = vanueid
             };
             _db.Configuration.ValidateOnSaveEnabled = false;
             try
             {
-                _db.AppointmentDateMasters.Attach(_appointmentdatedaster);
-                _db.Entry(_appointmentdatedaster).Property(asd => asd.totalCount).IsModified = true;
+                var data2 = _db.AppointmentDateMasters.Find(datehash);
+                _db.Entry(data2).CurrentValues.SetValues(_appointmentdatedaster);
+                _db.Entry(data2).State = EntityState.Modified;
+                //_db.AppointmentDateMasters.Attach(_appointmentdatedaster);
+                //_db.Entry(_appointmentdatedaster).Property(asd => asd.totalCount).IsModified = true;
                 _db.SaveChanges();
             }
             finally
@@ -753,7 +842,7 @@ namespace ErtoOfGujarat.Areas.License.Controllers
             }
 
             string time = null;
-            DateTime temp = new DateTime(13, 05, 2016, 09, 30, 00);
+            DateTime temp = new DateTime(2016, 05, 13, 09, 30, 00);
             if (timehash < 5)
             {
                 time = (temp.AddMinutes(timehash * 30)).Hour.ToString() + ":" + (temp.AddMinutes(timehash * 30)).Minute.ToString() + "-" + (temp.AddMinutes((timehash + 1) * 30)).Hour.ToString() + ":" + (temp.AddMinutes((timehash + 1) * 30)).Minute.ToString();
@@ -829,7 +918,7 @@ namespace ErtoOfGujarat.Areas.License.Controllers
 
             MailMessage _mailmessage = new MailMessage("shrujalshah28@gmail.com", email);
             _mailmessage.Subject = "Appointment";
-            _mailmessage.Body = "<p>Appointment Letter</p></br><table style=\"width:20%\"><tr><td> Vanue </td><td> " + vanue + "</td></tr><tr><td> Date </td><td>" + date + "</td></tr><tr><td> Time </td><td>" + time + "</td></tr></table></br><p> Call Shrujal and confirm your OTP.</p>";
+            _mailmessage.Body = "<p>Appointment Letter</p></br><table style=\"width:20%\"><tr><td> Vanue </td><td> " + vanue + "</td></tr><tr><td> Date </td><td>" + date + "</td></tr><tr><td> Time </td><td>" + time + "</td></tr></table></br><p> Thank You.</p>";
             _mailmessage.IsBodyHtml = true;
 
             SmtpClient sc = new SmtpClient();
